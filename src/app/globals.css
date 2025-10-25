@@ -3,6 +3,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --font-outfit: "Outfit", sans-serif;
 }
 
 @theme inline {
@@ -10,6 +11,23 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+}
+
+@theme {
+  --color-brand-100: #131313;
+  --color-brand-200: #1c1c1d;
+  --color-brand-300: #262627;
+  --color-brand-400: #2f2f30;
+  --color-brand-500: #2f2f2f;
+  --color-brand-600: #242425;
+  --color-brand-700: #2c2c2c;
+  --color-brand-800: #2d2d2e;
+  --color-light-100: #ffffff;
+  --color-light-200: #e8e8e8;
+  --color-light-300: #8f8f8f;
+  --color-light-400: #4c4c4c;
+  --color-secondary-100: #db2c00;
+  --color-secondary-200: #d43912;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -20,7 +38,8 @@
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-brand-100);
+  font-family: var(--font-sans);
+  color: var(--color-light-100);
+  padding: 40px 80px 40px 80px;
 }

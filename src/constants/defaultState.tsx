@@ -48,12 +48,45 @@ export const navbarPaths = [
   },
   {
     id: 4,
-    label: "Case Study",
-    href: "/case-study",
-  },
-  {
-    id: 5,
     label: "Contact",
     href: "/contact",
   },
 ];
+
+export const whatIamDoing = [
+  {
+    id: 1,
+    title: "Frontend Development Expertise",
+    description:
+      "Proficient in React.js, Next.js, and TypeScript, creating responsive, high-performance web and mobile interfaces with clean, scalable code and modern UI frameworks like Tailwind CSS and Material UI.",
+  },
+  {
+    id: 2,
+    title: "Full-Stack Project Experience",
+    description:
+      "Hands-on experience with both frontend and backend development using Node.js, Firebase, and MongoDB, contributing to live projects such as Nutritt (health app) and HexaHome (real estate platform).",
+  },
+  {
+    id: 3,
+    title: "Performance & Cloud Optimization",
+    description:
+      "Improved web app performance and scalability using Docker and AWS (S3, CloudFront, ECS, ECR) — achieving significant boosts in PageSpeed scores and deployment efficiency.",
+  },
+  {
+    id: 4,
+    title: "Achievement-Driven and Collaborative",
+    description:
+      "Awarded Employee of the Month and University Rank 1, recognized for teamwork, attention to detail, and proactive learning — staying updated with the latest in frontend technologies and best practices.",
+  },
+];
+
+export const experience = [
+  {
+    id: 1,
+    title: "Hexadecimal Software Pvt. Ltd.",
+    subTitle: "13 Feb 2023 - 30 Nov 2024",
+    description:
+      "Working as a Full Stack Developer, contributing to both frontend and backend development of web applications. Key projects include Nutritt, a health and nutrition app, and HexaHome, a real estate platform. Responsibilities encompass building responsive user interfaces, optimizing application performance, and collaborating with cross-functional teams to deliver high-quality software solutions.",
+  },
+];
+

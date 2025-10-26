@@ -90,3 +90,30 @@ export const experience = [
   },
 ];
 
+export const experienceTimeline = [
+  {
+    title: "Software Designer",
+    subtitle: "Hexadecimal Software Pvt. Ltd.",
+    startDate: "13 Feb 2023",
+    endDate: "30 Nov 2024",
+    description:
+      "Working as a Software Developer, contributing to both frontend and backend development of web applications. Key projects include Nutritt, a health and nutrition app, and HexaHome, a real estate platform. Responsibilities encompass building responsive user interfaces, optimizing application performance, and collaborating with cross-functional teams to deliver high-quality software solutions.",
+  },
+];
+
+export const educationTimeline = [
+  {
+    title: "Guru Gobind Singh Indraprastha University",
+    startDate: "2019",
+    endDate: "2020",
+    description:
+      "I earned a BBA in Computer Aided Management with a 85.841% from Ideal Institute Management and Technology (2016–2020), gaining expertise in management, programming and software development.",
+  },
+  {
+    title: "Kendriya Vidyalaya NFC Vigyan Vihar",
+    startDate: "2018",
+    endDate: "2019",
+    description:
+      "I completed my Senior Secondary Education from Kendriya Vidyalaya NFC Vigyan Vihar in 2018-2019, securing 77.81% and building a solid academic foundation.",
+  },
+];

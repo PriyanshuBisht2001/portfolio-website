@@ -9,19 +9,18 @@ const About = () => {
       <div>
         <Header text="About Me" />
         <p className="pb-1">
-          I am a tech enthusiast. I am passionate about design and frontend,
-          goal driven, quick to learn and a highly productive individual. I have
-          various industry ready design skills, I am experienced in various
-          softwares design tools, with 2+ Years of industrial experience in a
-          product based company.{" "}
+          As a dedicated and innovative Software Developer, I bring over 1.9
+          years of experience in designing, developing, and optimizing web and
+          mobile applications. I specialize in modern JavaScript frameworks like
+          React, Next.js, and Node.js to build user-friendly and
+          performance-driven solutions.
         </p>
         <p>
-          My job is to build your website so that it is functional and
-          user-friendly but at the same time attractive. Moreover, I add
-          personal touch to your product and make sure that is eye-catching and
-          easy to use. My aim is to bring across your message and identity in
-          the most creative way. I created web design for many famous brand
-          companies.
+          I am passionate about creating meaningful solutions that address
+          real-world problems and always strive to learn and implement
+          cutting-edge technologies. I am actively seeking opportunities where I
+          can contribute my technical skills and problem-solving abilities to
+          drive innovation and deliver exceptional value.
         </p>
       </div>
 

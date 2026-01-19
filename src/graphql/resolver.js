@@ -7,13 +7,19 @@ const resolver = {
   },
 
   Mutation: {
-    submitContactForm: async (parent, { input }) => {
-      await dbConnect();
-      const alreadyContacted = await Contact.findOne({ email: input.email });
-      if (alreadyContacted) {
-        throw new Error("You already Contacted with this email");
-      } else {
-        return Contact.create(input);
+    submitContactForm: async (_parent, { input }) => {
+      try {
+        await dbConnect();
+        const contact = await Contact.create(input);
+        return contact;
+      } catch (err) {
+        console.error("submitContactForm error:", err);
+
+        if (err instanceof Error) {
+          throw new Error(err.message);
+        }
+
+        throw new Error("Failed to submit contact form");
       }
     },
   },

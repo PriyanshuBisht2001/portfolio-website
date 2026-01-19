@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import Header from "./ui/Header";
 import ConnectArrow from "@/assets/ConnectArrow.svg";
 import Image from "next/image";
+import emailjs from "@emailjs/browser";
+import { submitContactForm } from "@/utils/serverAction.ut";
 
 const Contact = () => {
   const [formData, setFormData] = useState(() => ({
@@ -15,16 +17,51 @@ const Contact = () => {
   const [loading, setLoading] = useState(false);
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      console.log(formData, "formData");
+      const response = await submitContactForm(formData);
+      console.log(response, "response");
+      if (response?.success === true) {
+        await emailjs.send(
+          process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+          process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+          formData,
+          { publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY! },
+        );
+      } else {
+        alert(response.message);
+      }
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        console.error(err.message);
+      } else {
+        console.error("Unknown error:", err);
+      }
+    } finally {
+      setLoading(false);
+      // setFormData({
+      //   firstName: "",
+      //   lastName: "",
+      //   email: "",
+      //   phone: "",
+      //   message: "",
+      // });
+    }
+  };
+
   return (
     <section className="flex flex-col p-10 gap-7 w-full ">
       <Header text="Let's have a talk" />
-      <form onSubmit={() => {}} className="flex flex-col gap-6 w-full">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-6 w-full">
         <div className="flex gap-5">
           <div className="flex flex-col flex-1 gap-3">
             <label htmlFor="firstName" className="text-xl font-medium">

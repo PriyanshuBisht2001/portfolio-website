@@ -4,6 +4,7 @@ import "./globals.css";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import ProfileWidget from "@/components/ProfileWidget";
+import { Providers } from "./providers";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -13,7 +14,8 @@ const outfit = Outfit({
 
 export const metadata: Metadata = {
   title: "Priyanshu's Portfolio",
-  description: "Explore the portfolio of Priyanshu, a passionate developer showcasing projects and skills in web development and design.",
+  description:
+    "Explore the portfolio of Priyanshu, a passionate developer showcasing projects and skills in web development and design.",
 };
 
 export default function RootLayout({
@@ -24,6 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${outfit.variable} antialiased flex flex-row gap-6`}>
+        <Providers>
           <div className="flex w-1/4">
             <ProfileWidget />
           </div>
@@ -33,6 +36,7 @@ export default function RootLayout({
             </div>
             {children}
           </div>
+        </Providers>
       </body>
     </html>
   );

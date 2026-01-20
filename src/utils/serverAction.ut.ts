@@ -1,4 +1,7 @@
-import { SUBMIT_CONTACT_FORM } from "@/gql/mutation";
+"use server"
+
+import { SUBMIT_CONTACT_FORM } from "@/utils/mutation";
+import { cookies } from "next/headers";
 
 export const submitContactForm = async (props: {
   firstName: string;
@@ -36,4 +39,43 @@ export const submitContactForm = async (props: {
     ...result.data.submitContactForm,
     success: true,
   };
+};
+
+
+export const handleLogin = async (username: string, password: string) => {
+  try {
+    const response = await fetch(
+      `${
+        process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
+      }/api/graphql`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          query: `
+                    mutation Login($username: String!, $password: String!) {
+                        login(username: $username, password: $password)
+                    }
+                `,
+          variables: {
+            username,
+            password,
+          },
+        }),
+        cache: "no-cache",
+      }
+    );
+
+    const { data } = await response.json();
+    if (data?.login) {
+      const cookieStore = await cookies();
+      cookieStore.set("token", data.login, { path: "/" });
+    }
+    return data?.login || null;
+  } catch (error) {
+    console.error("Error during login:", error);
+    return { success: false, message: error };
+  }
 };

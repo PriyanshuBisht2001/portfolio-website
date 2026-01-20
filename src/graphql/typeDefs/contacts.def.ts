@@ -1,4 +1,4 @@
-const typeDefs = `
+const contactTypeDefs = `
 type Query {
     _health: String
 }
@@ -12,7 +12,7 @@ type Contact {
     message: String
 }
     
-type Mutation {
+extend type Mutation {
     submitContactForm(input: UserInput!): Contact
 }
 
@@ -25,4 +25,4 @@ input UserInput {
 }
 `;
 
-export default typeDefs;
+export default contactTypeDefs;

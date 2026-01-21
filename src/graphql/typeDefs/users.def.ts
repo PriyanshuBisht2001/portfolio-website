@@ -1,14 +1,19 @@
-
 const userTypeDefs = `
-  type User {
-    id: ID!
-    username: String!
-    isAdmin: Boolean
-  }
+type User {
+  id: ID!
+  username: String!
+  isAdmin: Boolean
+}
 
-  extend type Mutation {
-    register(username: String!, password: String!): User
-  }
+type AuthPayload {
+  token: String!
+  user: User!
+}
+
+extend type Mutation {
+  register(username: String!, password: String!): User
+  login(username: String!, password: String!): AuthPayload
+}
 `;
 
-export default userTypeDefs
+export default userTypeDefs;

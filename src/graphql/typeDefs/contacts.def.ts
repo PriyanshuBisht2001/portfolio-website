@@ -1,6 +1,6 @@
 const contactTypeDefs = `
-type Query {
-    _health: String
+extend type Query {
+  _health: String
 }
 
 type Contact {

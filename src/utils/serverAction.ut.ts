@@ -1,6 +1,6 @@
-"use server"
+"use server";
 
-import { SUBMIT_CONTACT_FORM } from "@/utils/mutation";
+import { LOGIN, SUBMIT_CONTACT_FORM } from "@/utils/mutation";
 import { cookies } from "next/headers";
 
 export const submitContactForm = async (props: {
@@ -41,9 +41,15 @@ export const submitContactForm = async (props: {
   };
 };
 
-
 export const handleLogin = async (username: string, password: string) => {
   try {
+    const payload = {
+      query: LOGIN,
+      variables: {
+        username,
+        password,
+      },
+    };
     const response = await fetch(
       `${
         process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
@@ -53,27 +59,22 @@ export const handleLogin = async (username: string, password: string) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          query: `
-                    mutation Login($username: String!, $password: String!) {
-                        login(username: $username, password: $password)
-                    }
-                `,
-          variables: {
-            username,
-            password,
-          },
-        }),
+        body: JSON.stringify(payload),
         cache: "no-cache",
-      }
+        credentials: "include",
+      },
     );
 
-    const { data } = await response.json();
-    if (data?.login) {
-      const cookieStore = await cookies();
-      cookieStore.set("token", data.login, { path: "/" });
+    const result = await response.json();
+
+    if (result.errors?.length) {
+      throw new Error(result.errors[0].message);
     }
-    return data?.login || null;
+    if (result?.data?.login) {
+      const cookieStore = await cookies();
+      cookieStore.set("token", result?.data?.login?.token, { path: "/" });
+    }
+    return result.data;
   } catch (error) {
     console.error("Error during login:", error);
     return { success: false, message: error };

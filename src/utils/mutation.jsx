@@ -9,3 +9,26 @@ export const SUBMIT_CONTACT_FORM = `
     }
   }
 `;
+
+export const REGISTER = `
+mutation {
+  register(username: "priyanshu", password: "priyanshu@hexa123") {
+    id
+    username
+    isAdmin
+  }
+}
+`;
+
+export const LOGIN = `
+mutation Login($username: String!, $password: String!) {
+  login(username: $username, password: $password) {
+    token
+    user {
+      id
+      username
+      isAdmin
+    }
+  }
+}
+`;

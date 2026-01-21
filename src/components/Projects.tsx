@@ -1,9 +1,6 @@
 "use client";
 
-import {
-  ProjectFieldTypes,
-  ProjectType,
-} from "@/constants/enums";
+import { ProjectFieldTypes } from "@/constants/enums";
 import { useEffect, useState } from "react";
 import Header from "./ui/Header";
 import ProjectCard from "./ui/ProjectCard";
@@ -13,17 +10,19 @@ import Image from "next/image";
 import AllProjectsSkeleton from "./skeleton/AllProjectsSkeleton";
 import SingleProjectSkeleton from "./skeleton/SingleProjectSkeleton";
 import { ProjectList } from "@/constants/defaultState";
-import { Project } from "@/constants/defaultState"
+import { Project } from "@/constants/defaultState";
+import { useAuth } from "@/contexts/AuthContext";
 const Projects = () => {
   const [selectedProject, setSelectedProject] =
     useState<ProjectFieldTypes | null>(null);
 
+  const { isAdmin } = useAuth();
   const [loading, setLoading] = useState(false);
   const [projectLoading, setProjectLoading] = useState(false);
 
   const handleProjectClick = async (id: string) => {
     setProjectLoading(true);
-    setSelectedProject(null); // Open the modal immediately
+    setSelectedProject(null);
     setSelectedProject(Project);
     setProjectLoading(false);
   };
@@ -43,6 +42,16 @@ const Projects = () => {
   return (
     <section className="flex flex-col p-10 w-full">
       <Header text={"Projects"} />
+      {isAdmin && (
+        <div
+          onClick={() => {
+            window.location.href = "project/add";
+          }}
+          className="flex mb-4 px-6 py-1 justify-center rounded-xl bg-secondary-100 hover:cursor-pointer hover:bg-secondary-100/80"
+        >
+          Add Project
+        </div>
+      )}
       {loading ? (
         <AllProjectsSkeleton />
       ) : (

@@ -14,23 +14,26 @@ interface SubmitContactArgs {
 }
 
 const ContactResolver = {
-      Mutation: {
-        submitContactForm: async (_parent: any, { input }: SubmitContactArgs) => {
-          try {
-            await dbConnect();
-            const contact = await Contact.create(input);
-            return contact;
-          } catch (err) {
-            console.error("submitContactForm error:", err);
-    
-            if (err instanceof Error) {
-              throw new Error(err.message);
-            }
-    
-            throw new Error("Failed to submit contact form");
-          }
-        },
+  Query: {
+    _health: () => "OK",
+  },
+  Mutation: {
+    submitContactForm: async (_parent: any, { input }: SubmitContactArgs) => {
+      try {
+        await dbConnect();
+        const contact = await Contact.create(input);
+        return contact;
+      } catch (err) {
+        console.error("submitContactForm error:", err);
+
+        if (err instanceof Error) {
+          throw new Error(err.message);
+        }
+
+        throw new Error("Failed to submit contact form");
       }
-}
+    },
+  },
+};
 
 export default ContactResolver;

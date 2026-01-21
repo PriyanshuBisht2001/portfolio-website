@@ -11,11 +11,11 @@ const LoginPage: React.FC = () => {
     e.preventDefault();
     setLoading(true);
     const response = await handleLogin(username, password);
-    if (!response) {
+    if(response.login){
+      window.location.href = "/project";
+    } else {
       alert("Login failed. Please try again.");
       return;
-    } else {
-      window.location.href = "/project";
     }
     setLoading(false);
   };

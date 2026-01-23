@@ -1,6 +1,6 @@
 "use server";
 
-import { LOGIN, SUBMIT_CONTACT_FORM } from "@/utils/mutation";
+import { ADD_PROJECT, LOGIN, SUBMIT_CONTACT_FORM, UPDATE_PROJECT } from "@/utils/mutation";
 import { cookies } from "next/headers";
 
 export const submitContactForm = async (props: {
@@ -80,3 +80,133 @@ export const handleLogin = async (username: string, password: string) => {
     return { success: false, message: error };
   }
 };
+
+export async function uploadImage(file: File): Promise<string> {
+  try {
+    const formData = new FormData();
+    formData.append("file", file);
+    const cookieStore = await cookies();
+    const authHeader = cookieStore.get("token")?.value;
+    console.log("uploadImage", file);
+    const res = await fetch(
+      `${
+        process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
+      }/api/upload`,
+      {
+        method: "POST",
+        body: formData,
+        headers: {
+          Authorization: `Bearer ${authHeader}`,
+        },
+      }
+    );
+
+    if (!res.ok) {
+      const errorText = await res.text();
+      console.error("Upload failed:", errorText);
+      throw new Error("Upload failed");
+    }
+
+    const json = await res.json();
+    console.log("Upload result:", json);
+    return json.secure_url;
+  } catch (error) {
+    console.error("Error during image upload:", error);
+    throw error;
+  }
+}
+
+export const addProject = async (props: {
+  name: string;
+  heroImage: string;
+  overview: string;
+  challenge: string;
+  photos: string[];
+  details: string[];
+  url: string;
+}) => {
+  const { name, heroImage, overview, challenge, photos, details, url } = props;
+  const cookieStore = await cookies();
+  const authHeader = cookieStore.get("token")?.value;
+
+  if (!authHeader) {
+    throw new Error("Authorization token missing");
+  }
+
+  const payload = {
+    query: ADD_PROJECT,
+    variables: {
+      input: { name, heroImage, overview, challenge, photos, details, url },
+    },
+  };
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"}/api/graphql`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+      cache: "no-store",
+    },
+  );
+
+  const result = await response.json();
+  console.log("---result----", result);
+
+  if (result.errors?.length) {
+    throw new Error(result.errors[0].message);
+  }
+
+  return {
+    ...result.data.addProject,
+    success: true,
+  };
+};
+
+export async function updateProject(data: any): Promise<any> {
+  try {
+    const cookieStore = await cookies();
+    const authHeader = cookieStore.get("token")?.value;
+    const payload = {
+      query: UPDATE_PROJECT,
+      variables: {
+        input: { ...data },
+      },
+    };
+
+    if (!authHeader) {
+      throw new Error("Authorization token missing");
+    }
+
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"}/api/graphql`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+        cache: "no-store",
+      },
+    );
+
+    if (!res.ok) {
+      throw new Error(`GraphQL request failed with status: ${res.status}`);
+    }
+
+    const json = await res.json();
+
+    if (json.errors) {
+      const errorMessage = json.errors
+        .map((error: any) => error.message)
+        .join(", ");
+      throw new Error(`GraphQL Error: ${errorMessage}`);
+    }
+
+    return json.data.updateProject;
+  } catch (error: any) {
+    console.error("Error adding project:", error.message);
+    throw new Error(error.message || "An unknown error occurred");
+  }
+}

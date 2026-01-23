@@ -11,5 +11,4 @@ export type ProjectFieldTypes = {
 
 export enum ProjectType {
   PROJECT = "project",
-  CASE_STUDY = "case_study",
 }

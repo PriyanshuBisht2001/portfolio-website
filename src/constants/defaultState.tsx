@@ -2,6 +2,7 @@ import EmailLogo from "@/assets/EmailIcon.svg";
 import ExperienceLogo from "@/assets/Experience.svg";
 import LocationIcon from "@/assets/LocationIcon.svg";
 import PhoneLogo from "@/assets/PhoneLogo.svg";
+import { ProjectType } from "./enums";
 
 export const profileWidgetDetails = [
   {
@@ -154,3 +155,10 @@ export const Project = {
   ],
   "url": "https://www.figma.com/design/Z3Ht53nZUdv0LZgUbqHP5s/Dashboard-Practices?node-id=0-1&t=htH4nIIQUUIsD3zo-1",
 }
+
+export const ProjectTypeValues = [
+  {
+    label: "Project",
+    value: ProjectType.PROJECT,
+  },
+];

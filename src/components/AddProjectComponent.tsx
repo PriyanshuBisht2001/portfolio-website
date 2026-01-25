@@ -7,22 +7,18 @@ import {
   uploadImage,
 } from "@/utils/serverAction.ut";
 import Header from "./ui/Header";
-import { ProjectTypeValues } from "@/constants/defaultState";
 import Image from "next/image";
-import { ProjectType } from "@/constants/enums";
+import { useRouter } from "next/navigation";
 
 const isDataURI = (str: string | null) =>
   typeof str === "string" && str.startsWith("data:image");
 
 const AddProjectPageComponent = ({
   existingProject,
-  type = ProjectType.PROJECT,
 }: {
   existingProject?: any;
-  type?: ProjectType;
 }) => {
   const [formData, setFormData] = useState({
-    type: type,
     name: "",
     heroImage: null,
     overview: "",
@@ -30,20 +26,18 @@ const AddProjectPageComponent = ({
     photos: [],
     details: [],
     url: "",
-    category: "",
   });
 
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
-  const { itemType, headerText, buttonText } = useMemo(() => {
+  const { headerText, buttonText } = useMemo(() => {
     const action = existingProject ? "Update" : "Add";
-    const itemType = type === ProjectType.PROJECT ? "Project" : "Case Study";
     return {
-      itemType,
-      headerText: `${action} ${itemType}`,
-      buttonText: `${action} ${itemType}`,
+      headerText: `${action} Project`,
+      buttonText: `${action} Project`,
     };
-  }, [existingProject, type]);
+  }, [existingProject]);
 
   useEffect(() => {
     if (existingProject) {
@@ -59,7 +53,7 @@ const AddProjectPageComponent = ({
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
+    >,
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -98,12 +92,11 @@ const AddProjectPageComponent = ({
       if (response) {
         alert(
           existingProject
-            ? `${itemType} updated successfully!`
-            : `${itemType} added successfully!`
+            ? "project updated successfully!"
+            : "project added successfully!",
         );
         if (!existingProject) {
           setFormData({
-            type: ProjectType.PROJECT,
             name: "",
             heroImage: null,
             overview: "",
@@ -111,13 +104,11 @@ const AddProjectPageComponent = ({
             photos: [],
             details: [],
             url: "",
-            category: "",
           });
-          window.location.href =
-            type === ProjectType.PROJECT ? "/projects" : "/case-study";
+          router.push("/project");
         }
       } else {
-        alert(`Failed to save ${itemType}.`);
+        alert(`Failed to save Project.`);
       }
     } catch (error) {
       console.error("Error submitting project:", error);
@@ -157,32 +148,6 @@ const AddProjectPageComponent = ({
         className="flex flex-col gap-6 w-full p-6 justify-center"
         onSubmit={handleSubmit}
       >
-        <div className="flex flex-col gap-3">
-          <label className="font-medium text-xl" htmlFor="type">
-            {itemType} Type:
-          </label>
-          <select
-            className="border border-light-400 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-secondary-100/80 flex hover:cursor-pointer"
-            id="type"
-            name="type"
-            value={formData.type}
-            onChange={handleChange}
-            required
-          >
-            <option value="" disabled className="bg-brand-300">
-              Select a {itemType} type
-            </option>
-            {ProjectTypeValues.map(({ label, value }) => (
-              <option
-                key={value}
-                value={value}
-                className="hover:cursor-pointer bg-brand-300 hover:bg-secondary-100/80"
-              >
-                {label}
-              </option>
-            ))}
-          </select>
-        </div>
         {[
           {
             label: "Name:",

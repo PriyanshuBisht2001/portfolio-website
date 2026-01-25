@@ -36,7 +36,6 @@ mutation Login($username: String!, $password: String!) {
 export const ADD_PROJECT = `
   mutation AddProject($input: ProjectInput!) {
     addProject(input:$input) {
-      type
       name 
       heroImage 
       overview 
@@ -44,7 +43,6 @@ export const ADD_PROJECT = `
       photos 
       details 
       url 
-      category 
     }
  }
 `;

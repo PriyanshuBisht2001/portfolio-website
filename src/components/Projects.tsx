@@ -9,10 +9,24 @@ import CrossIcon from "@/assets/CrossIcon.svg";
 import Image from "next/image";
 import AllProjectsSkeleton from "./skeleton/AllProjectsSkeleton";
 import SingleProjectSkeleton from "./skeleton/SingleProjectSkeleton";
-import { ProjectList } from "@/constants/defaultState";
 import { Project } from "@/constants/defaultState";
 import { useAuth } from "@/contexts/AuthContext";
-const Projects = () => {
+
+interface Project {
+  id: string;
+  name: string;
+  heroImage: string;
+  overview: string;
+  challenge: string;
+  photos: string[];
+  details: string[];
+  url: string;
+}
+interface ProjectsProps {
+  projectList: Project[];
+}
+
+const Projects = ({ projectList }: ProjectsProps) => {
   const [selectedProject, setSelectedProject] =
     useState<ProjectFieldTypes | null>(null);
 
@@ -56,7 +70,7 @@ const Projects = () => {
         <AllProjectsSkeleton />
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-          {ProjectList.map((project, i) => (
+          {projectList.map((project, i) => (
             <div
               onClick={() => handleProjectClick(project.id)}
               className="hover:cursor-pointer flex w-full"

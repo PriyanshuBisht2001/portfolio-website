@@ -32,6 +32,10 @@ const projectTypeDefs = `
     url: String
   }
 
+  extend type Query {
+    projects: [Project]
+  }
+
   extend type Mutation {
     addProject(input: ProjectInput!): Project
     deleteProject(id: ID!): Boolean

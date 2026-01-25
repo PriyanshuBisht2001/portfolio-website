@@ -8,7 +8,7 @@ const AllProjectsSkeleton: React.FC = () => {
           key={index}
           className="flex flex-col space-y-4  rounded-lg shadow-sm"
         >
-          <div className="h-[192px] bg-brand-100 rounded-xl"></div>
+          <div className="h-48 bg-brand-100 rounded-xl"></div>
           <div className="h-6 bg-brand-100 rounded w-3/4"></div>
           <div className="h-4 bg-brand-100 rounded w-1/2"></div>
         </div>

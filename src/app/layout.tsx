@@ -4,7 +4,7 @@ import "./globals.css";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import ProfileWidget from "@/components/ProfileWidget";
-import { Providers } from "./providers";
+import { AuthProvider } from "@/contexts/AuthContext";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${outfit.variable} antialiased flex flex-row gap-6`}>
-        <Providers>
+        <AuthProvider>
           <div className="flex w-1/4">
             <ProfileWidget />
           </div>
@@ -36,7 +36,7 @@ export default function RootLayout({
             </div>
             {children}
           </div>
-        </Providers>
+        </AuthProvider>
       </body>
     </html>
   );

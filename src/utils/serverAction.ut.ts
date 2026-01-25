@@ -2,6 +2,7 @@
 
 import { ADD_PROJECT, LOGIN, SUBMIT_CONTACT_FORM, UPDATE_PROJECT } from "@/utils/mutation";
 import { cookies } from "next/headers";
+import { GET_ALL_PROJECTS } from "./queries.ut";
 
 export const submitContactForm = async (props: {
   firstName: string;
@@ -115,6 +116,35 @@ export async function uploadImage(file: File): Promise<string> {
     throw error;
   }
 }
+
+export const fetchAllProjects = async () => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"}/api/graphql`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+
+      // 🔥 Important for Server Actions
+      cache: "no-store",
+
+      body: JSON.stringify({
+        query: GET_ALL_PROJECTS, // ✅ Correct query
+      }),
+    }
+  );
+
+  const json = await response.json();
+
+  if (json.errors) {
+    console.error("GraphQL Error:", json.errors);
+    throw new Error("Failed to fetch projects");
+  }
+
+  return json.data.projects; // ✅ return only projects
+};
+
 
 export const addProject = async (props: {
   name: string;

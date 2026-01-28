@@ -12,3 +12,8 @@ export type ProjectFieldTypes = {
 export enum ProjectType {
   PROJECT = "project",
 }
+
+export enum RevalidateTags {
+  PROJECTS = "projects",
+  SINGLEPROJECTS = "singleProjects",
+}

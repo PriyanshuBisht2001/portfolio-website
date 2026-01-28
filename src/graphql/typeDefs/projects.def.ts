@@ -34,6 +34,7 @@ const projectTypeDefs = `
 
   extend type Query {
     projects: [Project]
+    project(id: ID!): Project
   }
 
   extend type Mutation {

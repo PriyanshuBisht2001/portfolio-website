@@ -7,10 +7,10 @@ import ProjectCard from "./ui/ProjectCard";
 import ProjectModal from "./ui/ProjectModal";
 import CrossIcon from "@/assets/CrossIcon.svg";
 import Image from "next/image";
-import AllProjectsSkeleton from "./skeleton/AllProjectsSkeleton";
 import SingleProjectSkeleton from "./skeleton/SingleProjectSkeleton";
 import { Project } from "@/constants/defaultState";
 import { useAuth } from "@/contexts/AuthContext";
+import { fetchProjectByID } from "@/utils/serverAction.ut";
 
 interface Project {
   id: string;
@@ -31,13 +31,13 @@ const Projects = ({ projectList }: ProjectsProps) => {
     useState<ProjectFieldTypes | null>(null);
 
   const { isAdmin } = useAuth();
-  const [loading, setLoading] = useState(false);
   const [projectLoading, setProjectLoading] = useState(false);
 
   const handleProjectClick = async (id: string) => {
     setProjectLoading(true);
     setSelectedProject(null);
-    setSelectedProject(Project);
+    const response = await fetchProjectByID(id);
+    setSelectedProject(response);
     setProjectLoading(false);
   };
 
@@ -66,21 +66,17 @@ const Projects = ({ projectList }: ProjectsProps) => {
           Add Project
         </div>
       )}
-      {loading ? (
-        <AllProjectsSkeleton />
-      ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-          {projectList.map((project, i) => (
-            <div
-              onClick={() => handleProjectClick(project.id)}
-              className="hover:cursor-pointer flex w-full"
-              key={i}
-            >
-              <ProjectCard {...project} />
-            </div>
-          ))}
-        </div>
-      )}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+        {projectList.map((project, i) => (
+          <div
+            onClick={() => handleProjectClick(project.id)}
+            className="hover:cursor-pointer flex w-full"
+            key={i}
+          >
+            <ProjectCard {...project} />
+          </div>
+        ))}
+      </div>
 
       {(selectedProject || projectLoading) && (
         <div className="flex fixed top-0 left-0 right-0 bottom-0 bg-brand-100 px-20 py-10 bg-opacity-50 z-50 animate-slide-up overflow-auto">

@@ -1,5 +1,6 @@
 import dbConnect from "@/lib/db";
 import Project from "@/models/Projects.mo";
+import { verifyAdmin } from "@/utils/auth.ut";
 
 interface AddProjectInput {
   name: string;
@@ -27,10 +28,24 @@ const ProjectResolver = {
         throw new Error("Failed to fetch projects");
       }
     },
+    project: async (_parent: any, { id }: { id: string }) => {
+      try {
+        await dbConnect();
+        const project = await Project.findById(id);
+        return project;
+      } catch (error) {
+        throw new Error("Failed to Fetch Project");
+      }
+    },
   },
   Mutation: {
-    addProject: async (_parent: any, { input }: AddProjectArgs) => {
+    addProject: async (
+      _parent: any,
+      { input }: AddProjectArgs,
+      context: { token: string },
+    ) => {
       try {
+        await verifyAdmin(context.token);
         await dbConnect();
         const project = await Project.create(input);
         return project;

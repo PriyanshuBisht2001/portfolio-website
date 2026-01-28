@@ -7,7 +7,14 @@ const server = new ApolloServer({
   resolvers,
 });
 
-const handler = startServerAndCreateNextHandler(server);
+const handler = startServerAndCreateNextHandler(server, {
+    // @ts-expect-error next
+    context: async (req) => {
+      const auth = req.headers.get("authorization");
+      const token = auth?.split(" ")[1];
+      return { token };
+    },}
+  );
 
 export async function GET(req) {
   return handler(req);

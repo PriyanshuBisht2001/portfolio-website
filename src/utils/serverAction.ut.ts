@@ -1,8 +1,14 @@
 "use server";
 
-import { ADD_PROJECT, LOGIN, SUBMIT_CONTACT_FORM, UPDATE_PROJECT } from "@/utils/mutation";
+import {
+  ADD_PROJECT,
+  LOGIN,
+  SUBMIT_CONTACT_FORM,
+  UPDATE_PROJECT,
+} from "@/utils/mutation";
 import { cookies } from "next/headers";
-import { GET_ALL_PROJECTS } from "./queries.ut";
+import { GET_ALL_PROJECTS, GET_PROJECT_BY_ID } from "./queries.ut";
+import { RevalidateTags } from "@/constants/enums";
 
 export const submitContactForm = async (props: {
   firstName: string;
@@ -88,7 +94,6 @@ export async function uploadImage(file: File): Promise<string> {
     formData.append("file", file);
     const cookieStore = await cookies();
     const authHeader = cookieStore.get("token")?.value;
-    console.log("uploadImage", file);
     const res = await fetch(
       `${
         process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
@@ -99,7 +104,7 @@ export async function uploadImage(file: File): Promise<string> {
         headers: {
           Authorization: `Bearer ${authHeader}`,
         },
-      }
+      },
     );
 
     if (!res.ok) {
@@ -109,7 +114,6 @@ export async function uploadImage(file: File): Promise<string> {
     }
 
     const json = await res.json();
-    console.log("Upload result:", json);
     return json.secure_url;
   } catch (error) {
     console.error("Error during image upload:", error);
@@ -125,14 +129,14 @@ export const fetchAllProjects = async () => {
       headers: {
         "Content-Type": "application/json",
       },
-
-      // 🔥 Important for Server Actions
-      cache: "no-store",
-
       body: JSON.stringify({
-        query: GET_ALL_PROJECTS, // ✅ Correct query
+        query: GET_ALL_PROJECTS,
       }),
-    }
+      cache: "force-cache",
+      next: {
+        tags: [RevalidateTags.PROJECTS],
+      },
+    },
   );
 
   const json = await response.json();
@@ -142,9 +146,39 @@ export const fetchAllProjects = async () => {
     throw new Error("Failed to fetch projects");
   }
 
-  return json.data.projects; // ✅ return only projects
+  return json.data.projects;
 };
 
+export const fetchProjectByID = async (id: string) => {
+  const payload = {
+    query: GET_PROJECT_BY_ID,
+    variables: { projectID: id },
+  };
+
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"}/api/graphql`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+      cache: "force-cache",
+      next: {
+        tags: [RevalidateTags.SINGLEPROJECTS],
+      },
+    },
+  );
+
+  const json = await response.json();
+
+  if (json.errors?.length) {
+    console.error("GraphQL Error:", json.errors);
+    throw new Error(json.errors[0].message);
+  }
+
+  return json.data.project;
+};
 
 export const addProject = async (props: {
   name: string;
@@ -182,7 +216,6 @@ export const addProject = async (props: {
   );
 
   const result = await response.json();
-  console.log("---result----", result);
 
   if (result.errors?.length) {
     throw new Error(result.errors[0].message);

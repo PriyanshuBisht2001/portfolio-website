@@ -3,6 +3,7 @@ import Project from "@/models/Projects.mo";
 import { verifyAdmin } from "@/utils/auth.ut";
 
 interface AddProjectInput {
+  id: string;
   name: string;
   heroImage: string;
   overview: string;
@@ -12,7 +13,7 @@ interface AddProjectInput {
   url: string;
 }
 
-interface AddProjectArgs {
+interface ProjectArgs {
   input: AddProjectInput;
 }
 
@@ -41,7 +42,7 @@ const ProjectResolver = {
   Mutation: {
     addProject: async (
       _parent: any,
-      { input }: AddProjectArgs,
+      { input }: ProjectArgs,
       context: { token: string },
     ) => {
       try {
@@ -56,6 +57,50 @@ const ProjectResolver = {
           throw new Error(err.message);
         }
         throw new Error("Failed to Add Project");
+      }
+    },
+
+    deleteProject: async (_: any, { id }: any, context: any) => {
+      try {
+        await verifyAdmin(context.token);
+        await dbConnect();
+        const result = await Project.deleteOne({ _id: id });
+        return result.deletedCount === 1;
+      } catch (err) {
+        console.error("Project Deleting Error:", err);
+
+        if (err instanceof Error) {
+          throw new Error(err.message);
+        }
+        throw new Error("Failed to Delete Project");
+      }
+    },
+
+    updateProject: async (
+      _parent: any,
+      { input }: ProjectArgs,
+      context: { token: string },
+    ) => {
+      try {
+        await verifyAdmin(context.token);
+        await dbConnect();
+        const result = await Project.findOneAndUpdate(
+          { _id: input.id },
+          {
+            $set: { ...input },
+          },
+          {
+            new: true,
+          },
+        );
+        return result;
+      } catch (err) {
+        console.error("Update Project Error:", err);
+
+        if (err instanceof Error) {
+          throw new Error(err.message);
+        }
+        throw new Error("Failed to Update Project");
       }
     },
   },

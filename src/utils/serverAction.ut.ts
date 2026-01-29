@@ -2,6 +2,7 @@
 
 import {
   ADD_PROJECT,
+  DELETE_PROJECT,
   LOGIN,
   SUBMIT_CONTACT_FORM,
   UPDATE_PROJECT,
@@ -208,6 +209,7 @@ export const addProject = async (props: {
     {
       method: "POST",
       headers: {
+        Authorization: `Bearer ${authHeader}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify(payload),
@@ -228,48 +230,83 @@ export const addProject = async (props: {
 };
 
 export async function updateProject(data: any): Promise<any> {
+  const cookieStore = await cookies();
+  const authHeader = cookieStore.get("token")?.value;
+  const payload = {
+    query: UPDATE_PROJECT,
+    variables: {
+      input: { ...data },
+    },
+  };
+
+  if (!authHeader) {
+    throw new Error("Authorization token missing");
+  }
+
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"}/api/graphql`,
+    {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${authHeader}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+      cache: "no-store",
+    },
+  );
+
+  const json = await res.json();
+
+  if (json.errors?.length) {
+    console.error("GraphQL Error:", json.errors);
+    throw new Error(json.errors[0].message);
+  }
+
+  return json.data.updateProject;
+}
+
+export async function deleteProject(id: string): Promise<boolean> {
   try {
     const cookieStore = await cookies();
-    const authHeader = cookieStore.get("token")?.value;
+    const token = cookieStore.get("token")?.value;
     const payload = {
-      query: UPDATE_PROJECT,
-      variables: {
-        input: { ...data },
-      },
+      query: DELETE_PROJECT,
+      variables: { id },
     };
 
-    if (!authHeader) {
-      throw new Error("Authorization token missing");
+    if (!token) {
+      throw new Error("Authorization token is missing.");
     }
 
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"}/api/graphql`,
+    const response = await fetch(
+      `${
+        process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
+      }/api/graphql`,
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(payload),
-        cache: "no-store",
       },
     );
 
-    if (!res.ok) {
-      throw new Error(`GraphQL request failed with status: ${res.status}`);
+    if (!response.ok) {
+      throw new Error(`Network error: ${response.statusText}`);
     }
 
-    const json = await res.json();
+    const json = await response.json();
 
-    if (json.errors) {
-      const errorMessage = json.errors
-        .map((error: any) => error.message)
-        .join(", ");
-      throw new Error(`GraphQL Error: ${errorMessage}`);
+    if (json.errors?.length) {
+      console.error("GraphQL Error:", json.errors);
+      throw new Error(json.errors[0].message);
     }
 
-    return json.data.updateProject;
-  } catch (error: any) {
-    console.error("Error adding project:", error.message);
-    throw new Error(error.message || "An unknown error occurred");
+    return json.data?.deleteProject ?? false;
+  } catch (err: any) {
+    console.error("Failed to delete project:", err.message);
+    throw new Error(err.message || "Failed to delete project.");
   }
 }

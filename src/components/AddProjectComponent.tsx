@@ -105,8 +105,8 @@ const AddProjectPageComponent = ({
             details: [],
             url: "",
           });
-          router.push("/project");
         }
+        router.push("/project");
       } else {
         alert(`Failed to save Project.`);
       }

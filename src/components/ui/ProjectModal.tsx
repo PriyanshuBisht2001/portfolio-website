@@ -1,9 +1,11 @@
-import { ProjectFieldTypes, ProjectType } from "@/constants/enums";
+import { ProjectFieldTypes } from "@/constants/enums";
 import Header from "./Header";
 import Image from "next/image";
 import DummyImage from "@/assets/dummyImage.png";
 import ConnectArrow from "@/assets/ConnectArrow.svg";
 import Link from "next/link";
+import { useAuth } from "@/contexts/AuthContext";
+import { deleteProject } from "@/utils/serverAction.ut";
 
 const ProjectModal = ({
   id,
@@ -15,10 +17,37 @@ const ProjectModal = ({
   photos,
   url,
 }: ProjectFieldTypes) => {
+  const { isAdmin } = useAuth();
+
+  const handleDelete = async () => {
+    const response = await deleteProject(id);
+    if (response === true) {
+      window.location.reload();
+    } else {
+      alert("Error deleting project");
+    }
+  };
+
   return (
     <div className="flex flex-col w-full gap-11 bg-brand-200 p-10 relative rounded-[20px] h-fit">
       <div className="flex gap-10 items-center">
         <Header text={name} containerClassName="pb-0" />
+        {isAdmin && (
+          <div className="flex gap-4">
+            <Link
+              href={`/project/edit/${id}`}
+              className=" flex px-6 py-1 justify-center rounded-xl bg-secondary-100 hover:cursor-pointer hover:bg-secondary-100/80"
+            >
+              Edit
+            </Link>
+            <button
+              onClick={handleDelete}
+              className=" flex px-6 py-1 justify-center rounded-xl bg-red-600 hover:cursor-pointer hover:bg-red-700"
+            >
+              Delete
+            </button>
+          </div>
+        )}
       </div>
 
       <Image
@@ -79,10 +108,7 @@ const ProjectModal = ({
       </div>
 
       <div>
-        <Header
-          text={`Checkout Project`}
-          textClassName="!text-2xl"
-        />
+        <Header text={`Checkout Project`} textClassName="!text-2xl" />
         <Link
           href={url}
           target="_blank"

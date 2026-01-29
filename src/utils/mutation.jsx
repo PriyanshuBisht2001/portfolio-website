@@ -49,7 +49,7 @@ export const ADD_PROJECT = `
 
 export const UPDATE_PROJECT = `
   mutation UpdateProject($input: UpdateProjectInput!) {
-    updateProject($input: input) {
+    updateProject(input: $input) {
       name 
       heroImage 
       overview 
@@ -59,4 +59,10 @@ export const UPDATE_PROJECT = `
       url 
     }
   }
-`
+`;
+
+export const DELETE_PROJECT = `
+  mutation DeleteProject($id: ID!) {
+    deleteProject(id: $id)
+  }
+`;

@@ -38,17 +38,22 @@ export const navbarPaths = [
     href: "/",
   },
   {
-    id: 2,
+    id:2,
+    label: "Skills",
+    href: "/skill"
+  },
+  {
+    id: 3,
     label: "Resume",
     href: "/resume",
   },
   {
-    id: 3,
+    id: 4,
     label: "Projects",
     href: "/project",
   },
   {
-    id: 4,
+    id: 5,
     label: "Contact",
     href: "/contact",
   },

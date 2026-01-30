@@ -2,7 +2,6 @@
 import { navbarPaths } from "@/constants/defaultState";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
 
 const Navbar = () => {
   const pathname = usePathname();

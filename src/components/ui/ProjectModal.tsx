@@ -1,7 +1,9 @@
+"use client";
 import { ProjectFieldTypes } from "@/constants/enums";
 import Header from "./Header";
 import Image from "next/image";
 import DummyImage from "@/assets/dummyImage.png";
+import BackArrow from "@/assets/BackArrow.svg";
 import ConnectArrow from "@/assets/ConnectArrow.svg";
 import Link from "next/link";
 import { useAuth } from "@/contexts/AuthContext";
@@ -17,7 +19,7 @@ const ProjectModal = ({
   photos,
   url,
 }: ProjectFieldTypes) => {
-  const { isAdmin } = useAuth();
+  const { isAdmin = false } = useAuth();
 
   const handleDelete = async () => {
     const response = await deleteProject(id);
@@ -30,8 +32,15 @@ const ProjectModal = ({
 
   return (
     <div className="flex flex-col w-full gap-11 bg-brand-200 p-10 relative rounded-[20px] h-fit">
+      <Image
+        src={BackArrow}
+        className="absolute top-12 left-6 hover:cursor-pointer"
+        width={35}
+        onClick={() => window.history.back()}
+        alt="Back Arrow"
+      />
       <div className="flex gap-10 items-center">
-        <Header text={name} containerClassName="pb-0" />
+        <Header text={name} containerClassName="pb-0 pl-8" />
         {isAdmin && (
           <div className="flex gap-4">
             <Link

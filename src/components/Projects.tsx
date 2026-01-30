@@ -11,6 +11,7 @@ import SingleProjectSkeleton from "./skeleton/SingleProjectSkeleton";
 import { Project } from "@/constants/defaultState";
 import { useAuth } from "@/contexts/AuthContext";
 import { fetchProjectByID } from "@/utils/serverAction.ut";
+import Link from "next/link";
 
 interface Project {
   id: string;
@@ -27,31 +28,7 @@ interface ProjectsProps {
 }
 
 const Projects = ({ projectList }: ProjectsProps) => {
-  const [selectedProject, setSelectedProject] =
-    useState<ProjectFieldTypes | null>(null);
-
   const { isAdmin } = useAuth();
-  const [projectLoading, setProjectLoading] = useState(false);
-
-  const handleProjectClick = async (id: string) => {
-    setProjectLoading(true);
-    setSelectedProject(null);
-    const response = await fetchProjectByID(id);
-    setSelectedProject(response);
-    setProjectLoading(false);
-  };
-
-  useEffect(() => {
-    if (selectedProject || projectLoading) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [selectedProject, projectLoading]);
 
   return (
     <section className="flex flex-col p-10 w-full">
@@ -68,31 +45,11 @@ const Projects = ({ projectList }: ProjectsProps) => {
       )}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
         {projectList.map((project, i) => (
-          <div
-            onClick={() => handleProjectClick(project.id)}
-            className="hover:cursor-pointer flex w-full"
-            key={i}
-          >
+          <Link key={i} href={`/project/${project.id}`}>
             <ProjectCard {...project} />
-          </div>
+          </Link>
         ))}
       </div>
-
-      {(selectedProject || projectLoading) && (
-        <div className="flex fixed top-0 left-0 right-0 bottom-0 bg-brand-100 px-20 py-10 bg-opacity-50 z-50 animate-slide-up overflow-auto">
-          <Image
-            onClick={() => setSelectedProject(null)}
-            src={CrossIcon}
-            alt="Close"
-            className="absolute top-18 right-28 hover:cursor-pointer z-60"
-          />
-          {projectLoading ? (
-            <SingleProjectSkeleton />
-          ) : (
-            selectedProject && <ProjectModal {...selectedProject} />
-          )}
-        </div>
-      )}
     </section>
   );
 };

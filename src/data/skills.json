@@ -1,0 +1,94 @@
+{
+  "Frontend Development": [
+    {
+      "id": "javascript",
+      "name": "JavaScript",
+      "rating": 5,
+      "desc": "Core language for building full-stack features across web and mobile projects."
+    },
+    {
+      "id": "typescript",
+      "name": "TypeScript",
+      "rating": 5,
+      "desc": "Ensured type safety and scalability in both React Native and backend codebases."
+    },
+    {
+      "id": "reactjs",
+      "name": "React.js",
+      "rating": 5,
+      "desc": "Developed dynamic, responsive UIs with reusable components and state management."
+    },
+    {
+      "id": "nextjs",
+      "name": "Next.js",
+      "rating": 4,
+      "desc": "Implemented SSR and API routes for optimized, SEO-friendly web applications."
+    },
+    {
+      "id": "tailwindcss",
+      "name": "Tailwind CSS",
+      "rating": 5,
+      "desc": "Styled interfaces rapidly with utility-first classes for responsive design."
+    },
+    {
+      "id": "material-ui",
+      "name": "Material UI",
+      "rating": 4,
+      "desc": "Leveraged prebuilt components for consistent, accessible UI across projects."
+    },
+    {
+      "id": "html-css",
+      "name": "HTML & CSS",
+      "rating": 5,
+      "desc": "Built clean, semantic layouts with pixel-perfect styling."
+    },
+    {
+      "id": "jest",
+      "name": "Jest",
+      "rating": 4,
+      "desc": "Implemented unit and integration tests using Jest to ensure code reliability and maintainability."
+    }
+  ],
+  "Backend Development": [
+    {
+      "id": "nodejs",
+      "name": "Node.js",
+      "rating": 5,
+      "desc": "Engineered backend services with scalable APIs and real-time capabilities."
+    },
+    {
+      "id": "expressjs",
+      "name": "Express.js",
+      "rating": 5,
+      "desc": "Developed REST APIs and middleware pipelines for authentication and data flow."
+    },
+    {
+      "id": "graphql",
+      "name": "Graphql",
+      "rating": 4,
+      "desc": "Designed efficient GraphQL schemas and resolvers to optimize data fetching and reduce over-fetching."
+    }
+  ],
+  "Databases & Cloud": [
+    {
+      "id": "mongodb",
+      "name": "MongoDB",
+      "rating": 5,
+      "desc": "Designed optimized schemas and queries for high-performance data retrieval."
+    },
+    {
+      "id": "aws-s3-ec2",
+      "name": "AWS S3 & EC2",
+      "rating": 4,
+      "desc": "Configured cloud storage and deployed backend services on EC2 instances."
+    }
+  ],
+  "Tools & Collaboration": [
+    {
+      "id": "git-github",
+      "name": "Git & GitHub",
+      "rating": 5,
+      "desc": "Managed version control, branching, and PR workflows for team collaboration."
+    }
+  ]
+}

@@ -1,3 +1,5 @@
+export const revalidate = 0;
+
 import Projects from "@/components/Projects";
 import { fetchAllProjects } from "@/utils/serverAction.ut";
 const ProjectsPage = async () => {

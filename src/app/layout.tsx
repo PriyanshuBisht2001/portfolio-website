@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { Outfit } from "next/font/google";
-import "./globals.css";
+import { Outfit, Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import ProfileWidget from "@/components/ProfileWidget";
@@ -9,7 +8,13 @@ import { AuthProvider } from "@/contexts/AuthContext";
 const outfit = Outfit({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-outfit", // Defines the CSS variable
+  variable: "--font-outfit",
+});
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-poppins",
 });
 
 export const metadata: Metadata = {
@@ -25,13 +30,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${outfit.variable} antialiased flex flex-row gap-6`}>
+      <body className={`${poppins.variable} ${outfit.variable} antialiased lg:flex flex-row gap-6`}>
         <AuthProvider>
-          <div className="flex w-1/4">
+          <div className="lg:flex lg:w-1/4">
             <ProfileWidget />
           </div>
-          <div className="flex w-3/4 relative bg-brand-200 rounded-[20px]">
-            <div className="absolute right-0 top-0">
+          <div className="flex lg:w-3/4 relative bg-[linear-gradient(235deg,#1b1f2e,#2c133d,#020617,#301541,#101435)] lg:bg-none lg:bg-brand-200 lg:rounded-[20px]">
+            <div className="hidden lg:block absolute right-0 top-0">
               <Navbar />
             </div>
             {children}

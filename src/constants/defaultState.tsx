@@ -38,9 +38,9 @@ export const navbarPaths = [
     href: "/",
   },
   {
-    id:2,
+    id: 2,
     label: "Skills",
-    href: "/skill"
+    href: "/skill",
   },
   {
     id: 3,
@@ -124,42 +124,51 @@ export const educationTimeline = [
   },
 ];
 
-export const ProjectList = [{
-  "id": "1",
-  "name": "Dice Game",
-  "heroImage": "https://res.cloudinary.com/db7qny8pw/image/upload/v1751523609/projects/mul5hinqncvfikpzmcus.png",
-},{
-  "id": "2",
-  "name": "Weather App",
-  "heroImage": "https://res.cloudinary.com/db7qny8pw/image/upload/v1751523609/projects/mul5hinqncvfikpzmcus.png",
-},{
-  "id": "3",
-  "name": "E-commerce Website",
-  "heroImage": "https://res.cloudinary.com/db7qny8pw/image/upload/v1751523609/projects/mul5hinqncvfikpzmcus.png",
-}
-]
+export const ProjectList = [
+  {
+    id: "1",
+    name: "Dice Game",
+    heroImage:
+      "https://res.cloudinary.com/db7qny8pw/image/upload/v1751523609/projects/mul5hinqncvfikpzmcus.png",
+  },
+  {
+    id: "2",
+    name: "Weather App",
+    heroImage:
+      "https://res.cloudinary.com/db7qny8pw/image/upload/v1751523609/projects/mul5hinqncvfikpzmcus.png",
+  },
+  {
+    id: "3",
+    name: "E-commerce Website",
+    heroImage:
+      "https://res.cloudinary.com/db7qny8pw/image/upload/v1751523609/projects/mul5hinqncvfikpzmcus.png",
+  },
+];
 
 export const Project = {
-  "id": "1",
-  "name": "Dice Game",
-  "heroImage": "https://res.cloudinary.com/db7qny8pw/image/upload/v1751523609/projects/mul5hinqncvfikpzmcus.png",
-  "overview": "This dashboard is designed for an internal HR management system, helping teams visualize employee activities, onboarding progress, and productivity metricsâ€”all in one unified view.",
-  "challenge": "To create a data-heavy interface that remains user-friendly, visually engaging, and easy to scan. The goal was to present complex HR information in a structured, digestible way without overwhelming the user.",
-  "photos": [
+  id: "1",
+  name: "Dice Game",
+  heroImage:
+    "https://res.cloudinary.com/db7qny8pw/image/upload/v1751523609/projects/mul5hinqncvfikpzmcus.png",
+  overview:
+    "This dashboard is designed for an internal HR management system, helping teams visualize employee activities, onboarding progress, and productivity metricsâ€”all in one unified view.",
+  challenge:
+    "To create a data-heavy interface that remains user-friendly, visually engaging, and easy to scan. The goal was to present complex HR information in a structured, digestible way without overwhelming the user.",
+  photos: [
     "https://res.cloudinary.com/db7qny8pw/image/upload/v1751523613/projects/u3ntfysa6f57vr10obmg.png",
     "https://res.cloudinary.com/db7qny8pw/image/upload/v1751523616/projects/kc6d6hhklz95nin9e8ux.png",
-    "https://res.cloudinary.com/db7qny8pw/image/upload/v1751523620/projects/lsfscyghxi176jaty2ah.png"
+    "https://res.cloudinary.com/db7qny8pw/image/upload/v1751523620/projects/lsfscyghxi176jaty2ah.png",
   ],
-  "details": [
+  details: [
     "User Info Card: Displays employee profile, role, and key device details.",
     "Work Progress Tracker: Bar graph showing average daily work hours.",
     "Work Hour Goal: Circular tracker for remaining hours in a workday.",
     "Onboarding Status: Progress breakdown with completion status of 8 onboarding tasks.",
     "Team Calendar: Weekly schedule with clear time slots for team meetings and onboarding sessions.",
-    "Top Metrics Display: Real-time overview of employees, hires, and total projects."
+    "Top Metrics Display: Real-time overview of employees, hires, and total projects.",
   ],
-  "url": "https://www.figma.com/design/Z3Ht53nZUdv0LZgUbqHP5s/Dashboard-Practices?node-id=0-1&t=htH4nIIQUUIsD3zo-1",
-}
+  url: "https://www.figma.com/design/Z3Ht53nZUdv0LZgUbqHP5s/Dashboard-Practices?node-id=0-1&t=htH4nIIQUUIsD3zo-1",
+};
 
 export const ProjectTypeValues = [
   {

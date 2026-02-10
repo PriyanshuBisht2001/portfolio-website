@@ -1,10 +1,10 @@
 import About from "@/components/About";
-import Skill from "./skill/page";
+import MobileSkillComponent from "@/components/MobileSkillComponent";
 
 export default function Home() {
   return (
     <main>
-      <Skill />
+      <MobileSkillComponent />
       <About />
     </main>
   );

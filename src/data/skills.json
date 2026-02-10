@@ -4,91 +4,178 @@
       "id": "javascript",
       "name": "JavaScript",
       "rating": 5,
-      "desc": "Core language for building full-stack features across web and mobile projects."
+      "desc": "Core language for building full-stack features across web and mobile projects.",
+      "bgColor": "from-[#2c2163] via-[#211c58] to-[#943798]",
+      "icon": "/javascript.svg"
     },
     {
       "id": "typescript",
       "name": "TypeScript",
       "rating": 5,
-      "desc": "Ensured type safety and scalability in both React Native and backend codebases."
+      "desc": "Ensured type safety and scalability in both React Native and backend codebases.",
+      "bgColor": "from-[#2c2163] via-[#211c58] to-[#943798]",
+      "icon": "/typescript.svg"
     },
     {
       "id": "reactjs",
       "name": "React.js",
       "rating": 5,
-      "desc": "Developed dynamic, responsive UIs with reusable components and state management."
+      "desc": "Developed dynamic, responsive UIs with reusable components and state management.",
+      "bgColor": "from-[#51577e] via-[#262a58] to-[#2b4c92]",
+      "icon": "/react.svg"
     },
     {
       "id": "nextjs",
       "name": "Next.js",
       "rating": 4,
-      "desc": "Implemented SSR and API routes for optimized, SEO-friendly web applications."
+      "desc": "Implemented SSR and API routes for optimized, SEO-friendly web applications.",
+      "bgColor": "from-[#5e3f4e] via-[#1b2048] to-[#3b39a0]",
+      "icon": "/nextjs.svg"
     },
     {
       "id": "tailwindcss",
       "name": "Tailwind CSS",
       "rating": 5,
-      "desc": "Styled interfaces rapidly with utility-first classes for responsive design."
+      "desc": "Styled interfaces rapidly with utility-first classes for responsive design.",
+      "bgColor": "from-[#33295b] via-[#6d495e] to-[#277e4b]",
+      "icon": "/tailwind.svg"
     },
     {
-      "id": "material-ui",
-      "name": "Material UI",
+      "id": "redux",
+      "name": "Redux",
       "rating": 4,
-      "desc": "Leveraged prebuilt components for consistent, accessible UI across projects."
-    },
-    {
-      "id": "html-css",
-      "name": "HTML & CSS",
-      "rating": 5,
-      "desc": "Built clean, semantic layouts with pixel-perfect styling."
-    },
-    {
-      "id": "jest",
-      "name": "Jest",
-      "rating": 4,
-      "desc": "Implemented unit and integration tests using Jest to ensure code reliability and maintainability."
+      "desc": "Managed global application state efficiently.",
+      "bgColor": "from-[#33295b] via-[#6d495e] to-[#277e4b]",
+      "icon": "/redux.svg"
     }
   ],
+
   "Backend Development": [
     {
       "id": "nodejs",
       "name": "Node.js",
       "rating": 5,
-      "desc": "Engineered backend services with scalable APIs and real-time capabilities."
+      "desc": "Engineered backend services with scalable APIs and real-time capabilities.",
+      "bgColor": "from-[#ad3861] via-[#262a58] to-[#2e1e54]",
+      "icon": "/nodejs.svg"
     },
     {
       "id": "expressjs",
       "name": "Express.js",
       "rating": 5,
-      "desc": "Developed REST APIs and middleware pipelines for authentication and data flow."
+      "desc": "Developed REST APIs and middleware pipelines for authentication and data flow.",
+      "bgColor": "from-[#c3504f] via-[#7b3450] to-[#e05a4f]",
+      "icon": "/expressjs.svg"
     },
     {
       "id": "graphql",
-      "name": "Graphql",
+      "name": "GraphQL",
       "rating": 4,
-      "desc": "Designed efficient GraphQL schemas and resolvers to optimize data fetching and reduce over-fetching."
+      "desc": "Designed efficient GraphQL schemas and resolvers.",
+      "bgColor": "from-[#bd387c] via-[#51577e] to-[#301f54]",
+      "icon": "/graphql.svg"
+    },
+    {
+      "id": "restapi",
+      "name": "REST APIs",
+      "rating": 4,
+      "desc": "Built scalable RESTful services.",
+      "bgColor": "from-[#2c2163] via-[#211c58] to-[#943798]",
+      "icon": "/restapi.svg"
     }
   ],
+
   "Databases & Cloud": [
     {
       "id": "mongodb",
       "name": "MongoDB",
       "rating": 5,
-      "desc": "Designed optimized schemas and queries for high-performance data retrieval."
+      "desc": "Designed optimized schemas and queries.",
+      "bgColor": "from-[#33295b] via-[#6d495e] to-[#277e4b]",
+      "icon": "/mongodb.svg"
     },
     {
       "id": "aws-s3-ec2",
       "name": "AWS S3 & EC2",
       "rating": 4,
-      "desc": "Configured cloud storage and deployed backend services on EC2 instances."
+      "desc": "Configured cloud storage and deployed backend services on EC2 instances.",
+      "bgColor": "from-[#bd387c] via-[#51577e] to-[#301f54]",
+      "icon": "/aws.svg"
+    },
+    {
+      "id": "firebase",
+      "name": "Firebase",
+      "rating": 4,
+      "desc": "Used for authentication and realtime database.",
+      "bgColor": "from-[#c3504f] via-[#7b3450] to-[#e05a4f]",
+      "icon": "/firebase.svg"
+    },
+    {
+      "id": "docker",
+      "name": "Docker",
+      "rating": 4,
+      "desc": "Containerized applications for deployment.",
+      "bgColor": "from-[#2c2163] via-[#211c58] to-[#943798]",
+      "icon": "/docker.svg"
     }
   ],
+
   "Tools & Collaboration": [
     {
-      "id": "git-github",
-      "name": "Git & GitHub",
+      "id": "git",
+      "name": "Git",
       "rating": 5,
-      "desc": "Managed version control, branching, and PR workflows for team collaboration."
+      "desc": "Version control and collaboration.",
+      "bgColor": "from-[#bd387c] via-[#51577e] to-[#301f54]",
+      "icon": "/git.svg"
+    },
+    {
+      "id": "github",
+      "name": "GitHub",
+      "rating": 5,
+      "desc": "Repository hosting and CI workflows.",
+      "bgColor": "from-[#2c2163] via-[#211c58] to-[#943798]",
+      "icon": "/github.svg"
+    },
+    {
+      "id": "jira",
+      "name": "Jira",
+      "rating": 4,
+      "desc": "Agile project management and issue tracking.",
+      "bgColor": "from-[#51577e] via-[#262a58] to-[#2b4c92]",
+      "icon": "/jira.svg"
+    },
+    {
+      "id": "confluence",
+      "name": "Confluence",
+      "rating": 4,
+      "desc": "Documentation and team knowledge base.",
+      "bgColor": "from-[#bd387c] via-[#51577e] to-[#301f54]",
+      "icon": "/confluence.svg"
+    },
+    {
+      "id": "vscode",
+      "name": "VS Code",
+      "rating": 5,
+      "desc": "Primary development environment.",
+      "bgColor": "from-[#51577e] via-[#262a58] to-[#2b4c92]",
+      "icon": "/vscode.svg"
+    },
+    {
+      "id": "postman",
+      "name": "Postman",
+      "rating": 4,
+      "desc": "API testing and debugging.",
+      "bgColor": "from-[#bd387c] via-[#51577e] to-[#301f54]",
+      "icon": "/postman.svg"
+    },
+    {
+      "id": "figma",
+      "name": "Figma",
+      "rating": 4,
+      "desc": "UI/UX design and prototyping.",
+      "bgColor": "from-[#33295b] via-[#6d495e] to-[#277e4b]",
+      "icon": "/figma.svg"
     }
   ]
 }

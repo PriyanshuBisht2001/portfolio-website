@@ -1,10 +1,10 @@
 import About from "@/components/About";
-import MobileSkillComponent from "@/components/MobileSkillComponent";
+import MobileAbout from "@/components/MobileAbout";
 
 export default function Home() {
   return (
-    <main>
-      <MobileSkillComponent />
+    <main className="w-full">
+      <MobileAbout />
       <About />
     </main>
   );

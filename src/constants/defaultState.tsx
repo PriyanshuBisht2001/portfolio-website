@@ -3,6 +3,7 @@ import ExperienceLogo from "@/assets/Experience.svg";
 import LocationIcon from "@/assets/LocationIcon.svg";
 import PhoneLogo from "@/assets/PhoneLogo.svg";
 import { ProjectType } from "./enums";
+import GmailLogo from "@/assets/Gmail.svg";
 
 export const profileWidgetDetails = [
   {
@@ -176,3 +177,28 @@ export const ProjectTypeValues = [
     value: ProjectType.PROJECT,
   },
 ];
+
+export const GetInTouchDetails = [
+  {
+    id: 1,
+    label: "EMAIL",
+    link: "mailto:priyanshubisht159@gmail.com",
+    value: "priyanshubisht159@gmail.com",
+    icon: "https://cdn-icons-png.flaticon.com/512/732/732200.png",
+  },
+  {
+    id: 2,
+    label: "LinkedIn",
+    link: "https://www.linkedin.com/in/priyanshu-bisht-5a5b00210/",
+    value: "priyanshu-bisht-5a5b00210",
+    icon: "https://cdn-icons-png.flaticon.com/512/174/174857.png",
+  },
+  {
+    id: 3,
+    label: "GitHub",
+    link: "https://github.com/PriyanshuBisht2001",
+    value: "PriyanshuBisht2001",
+    icon: "https://cdn-icons-png.flaticon.com/512/25/25231.png",
+  },
+]
+  

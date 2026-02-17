@@ -28,6 +28,9 @@
   --color-light-400: #4c4c4c;
   --color-secondary-100: #db2c00;
   --color-secondary-200: #d43912;
+  --color-accent-100: #b53ad0;
+  --color-accent-200: #fec737;
+  --color-accent-300: #ff6b6b;
 }
 
 @media (prefers-color-scheme: dark) {

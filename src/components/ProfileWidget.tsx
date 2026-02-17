@@ -1,6 +1,7 @@
 import { profileWidgetDetails } from "@/constants/defaultState";
 import Image from "next/image";
 import Menu from "@/assets/Menu.svg";
+import TypingText from "./ui/TypingText";
 
 const ProfileWidget = () => {
   return (
@@ -49,12 +50,11 @@ const ProfileWidget = () => {
         </span>
       </div>
       <div className="absolute z-10 top-52 left-2 lg:hidden">
+        <span className="font-semibold text-white text-[clamp(12px,3vw,26px)]">Building Scalable Web Experiences</span>
         <p className="font-extrabold text-[clamp(26px,5vw,36px)] mb-2">
-          Hi, I'm Priyanshu!
+         What I Specialize In
         </p>
-        <span className="font-emoji text-[clamp(18px,3vw,22px)]">
-          Building Amazing <br /> Website that make an impact
-        </span>
+          <TypingText />
       </div>
       <div className="top-40 relative flex lg:hidden gap-4 md:w-full md:pl-3 z-20">
         <button className="bg-linear-to-r from-[#ed935d] via-[#d72961] to-[#d42780] py-3 px-5 min-w-[clamp(160px,35vw,200px)] rounded-2xl border-2">

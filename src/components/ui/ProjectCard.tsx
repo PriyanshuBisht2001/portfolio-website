@@ -8,17 +8,16 @@ type ProjectFieldTypes = {
 
 const ProjectCard = ({ name, heroImage }: ProjectFieldTypes) => {
   return (
-    <div className="flex flex-col gap-3 hover:cursor-pointer">
+    <div className="shrink-0 text-center lg:text-left pb-5 rounded-lg bg-[#1d2647] lg:bg-none flex flex-col gap-4 lg:gap-3 hover:cursor-pointer">
       <Image
         src={heroImage || DummyImage}
         alt={name}
         width={400}
         height={192}
-        sizes="(max-width: 768px) 100vw, 33vw"
-        className="rounded-2xl h-48 object-cover"
+        className="rounded-t-lg lg:rounded-2xl h-34 lg:h-48 w-[200px] md:w-full object-cover"
         loading="eager"
       />
-      <h4 className="text-xl font-bold">{name}</h4>
+      <h4 className="text-lg font-semibold lg:text-xl lg:font-bold">{name}</h4>
     </div>
   );
 };

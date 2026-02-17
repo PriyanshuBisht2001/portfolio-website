@@ -5,7 +5,7 @@ import RightArrow from "@/assets/RightArrow.svg";
 
 const About = () => {
   return (
-    <section className="flex flex-col p-10 gap-11">
+    <section className="hidden lg:flex flex-col p-10 gap-11">
       <div>
         <Header text="About Me" />
         <p className="pb-1">

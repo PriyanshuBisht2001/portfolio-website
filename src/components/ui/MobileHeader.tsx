@@ -15,7 +15,7 @@ export default function MobileHeader({ title }: { title: string }) {
   const selectedColor = colors[colorIndex];
 
   return (
-    <div className="flex gap-3 items-center pb-4">
+    <div className="flex gap-3 items-center pb-4 lg:hidden">
       <h2 className="font-semibold whitespace-nowrap text-[clamp(22px,4vw,28px)]">
         {title}
       </h2>

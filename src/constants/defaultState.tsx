@@ -95,17 +95,30 @@ export const experience = [
     description:
       "Working as a Full Stack Developer, contributing to both frontend and backend development of web applications. Key projects include Nutritt, a health and nutrition app, and HexaHome, a real estate platform. Responsibilities encompass building responsive user interfaces, optimizing application performance, and collaborating with cross-functional teams to deliver high-quality software solutions.",
   },
+  {
+    id: 2,
+    title: "Data Research Analyst",
+    subTitle: "1 May 2021 - 31 Aug 2021",
+    description: "As a Data Research Analyst, I conduct research, collect and manage data and databases, and develop the data and result into a format easily representable to other employees."
+  }
 ];
 
 export const experienceTimeline = [
   {
-    title: "Software Designer",
+    title: "Software Developer",
     subtitle: "Hexadecimal Software Pvt. Ltd.",
     startDate: "13 Feb 2023",
     endDate: "30 Nov 2024",
     description:
       "Working as a Software Developer, contributing to both frontend and backend development of web applications. Key projects include Nutritt, a health and nutrition app, and HexaHome, a real estate platform. Responsibilities encompass building responsive user interfaces, optimizing application performance, and collaborating with cross-functional teams to deliver high-quality software solutions.",
   },
+  {
+    title: "Data Research Analyst",
+    subTitle: "ACE Study Overseas",
+    startDate: "1 May 2021",
+    endDate: "31 Aug 2021",
+    description: "As a Data Research Analyst, I conduct research, collect and manage data and databases, and develop the data and result into a format easily representable to other employees."
+  }
 ];
 
 export const educationTimeline = [

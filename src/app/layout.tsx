@@ -36,7 +36,7 @@ export default function RootLayout({
             <ProfileWidget />
           </div>
           <div className="flex lg:w-3/4 lg:relative bg-[linear-gradient(235deg,#1b1f2e,#2c133d,#020617,#301541,#101435)] lg:bg-none lg:bg-brand-200 lg:rounded-[20px]">
-            <div className="hidden lg:block lg:absolute right-0 top-0">
+            <div className="hidden lg:block lg:absolute right-0 top-0 z-30">
               <Navbar />
             </div>
             {children}

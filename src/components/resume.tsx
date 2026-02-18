@@ -7,7 +7,6 @@ import {
 
 import ExperienceIcon from "@/assets/Experience.svg";
 import EducationIcon from "@/assets/Education.svg";
-import TextCard from "./ui/TextCard";
 
 const ResumeComponent = () => {
   return (

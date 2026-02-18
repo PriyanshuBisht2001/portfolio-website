@@ -2,7 +2,8 @@ import { fetchAllProjects } from "@/utils/serverAction.ut";
 import MobileSkillComponent from "./MobileSkillComponent";
 import Projects from "./Projects";
 import GetInTouch from "./GetInTouch";
-import Image from "next/image";
+import TimelineComponent from "./ui/TimelineComponent";
+import { experienceTimeline } from "@/constants/defaultState";
 
 export default async function MobileAbout() {
   const projects = await fetchAllProjects();
@@ -11,6 +12,9 @@ export default async function MobileAbout() {
     <div className="w-full lg:hidden">
       <MobileSkillComponent />
       <Projects projectList={projects} />
+      <div className="px-5 pt-10">
+      <TimelineComponent heading="Experience" items={experienceTimeline} />
+      </div>
       <div className="px-5 py-10 md:bg-[url('/bgwebapps.webp')] md:bg-cover md:bg-center">
         <h3 className="text-[22px] font-semibold text-white mb-4">
           Let’s build something meaningful
@@ -23,9 +27,9 @@ export default async function MobileAbout() {
         </p>
       </div>
       <GetInTouch />
-      <div className="border-t my-8 border-white/10 pt-6 text-center text-sm text-gray-500">
+      <footer className="border-t my-8 border-white/10 pt-6 text-center text-sm text-gray-500">
         © {new Date().getFullYear()} Priyanshu Bisht. All rights reserved.
-      </div>
+      </footer>
     </div>
   );
 }

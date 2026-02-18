@@ -26,13 +26,13 @@ export default function Skill() {
           <h1 className="text-[28px] md:text-[32px] font-extrabold">
             Technical Proficiencies
           </h1>
-          <Link href="/">
+          <Link href="/" className="lg:hidden">
             <Image src={Cross} alt="cross" width={40} height={40}/>
           </Link>
         </div>
         {Object.entries(typedSkills).map(([category, skillList]) => (
           <section key={category} className="flex flex-col gap-8 lg:gap-4">
-            <h2 className="hidden lg:blocktext-2xl font-semibold lg:text-secondary-100">
+            <h2 className="hidden lg:block text-2xl font-semibold lg:text-secondary-100">
               {category}
             </h2>
             <MobileHeader title={category} />

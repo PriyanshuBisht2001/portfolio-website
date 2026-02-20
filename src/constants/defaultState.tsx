@@ -114,7 +114,7 @@ export const experienceTimeline = [
   },
   {
     title: "Data Research Analyst",
-    subTitle: "ACE Study Overseas",
+    subtitle: "ACE Study Overseas Pvt. Ltd.",
     startDate: "1 May 2021",
     endDate: "31 Aug 2021",
     description: "As a Data Research Analyst, I conduct research, collect and manage data and databases, and develop the data and result into a format easily representable to other employees."

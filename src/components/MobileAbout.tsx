@@ -3,7 +3,10 @@ import MobileSkillComponent from "./MobileSkillComponent";
 import Projects from "./Projects";
 import GetInTouch from "./GetInTouch";
 import TimelineComponent from "./ui/TimelineComponent";
-import { experienceTimeline } from "@/constants/defaultState";
+import {
+  educationTimeline,
+  experienceTimeline,
+} from "@/constants/defaultState";
 
 export default async function MobileAbout() {
   const projects = await fetchAllProjects();
@@ -13,8 +16,12 @@ export default async function MobileAbout() {
       <MobileSkillComponent />
       <Projects projectList={projects} />
       <div className="px-5 pt-10">
-      <TimelineComponent heading="Experience" items={experienceTimeline} />
+        <TimelineComponent heading="Experience" items={experienceTimeline} />
       </div>
+      <div className="px-5 pt-10">
+        <TimelineComponent heading="Education" items={educationTimeline} />
+      </div>
+
       <div className="px-5 py-10 md:bg-[url('/bgwebapps.webp')] md:bg-cover md:bg-center">
         <h3 className="text-[22px] font-semibold text-white mb-4">
           Let’s build something meaningful

@@ -5,6 +5,9 @@ import ConnectArrow from "@/assets/ConnectArrow.svg";
 import Image from "next/image";
 import emailjs from "@emailjs/browser";
 import { submitContactForm } from "@/utils/serverAction.ut";
+import Input from "./ui/Input";
+import Cross from "@/assets/CrossIcon.svg";
+import Link from "next/link";
 
 const Contact = () => {
   const [formData, setFormData] = useState(() => ({
@@ -48,95 +51,76 @@ const Contact = () => {
       }
     } finally {
       setLoading(false);
-      // setFormData({
-      //   firstName: "",
-      //   lastName: "",
-      //   email: "",
-      //   phone: "",
-      //   message: "",
-      // });
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        message: "",
+      });
     }
   };
 
   return (
-    <section className="flex flex-col p-10 gap-7 w-full ">
+    <section className="flex flex-col p-10 gap-7 w-full h-full absolute lg:static top-0 z-20 bg-[linear-gradient(235deg,#1b1f2e,#2c133d,#301541,#101435)] lg:bg-none">
       <Header text="Let's have a talk" />
+      <div className="flex justify-between mb-5 lg:hidden">
+        <h1 className="text-[28px] md:text-[32px] font-extrabold">
+          Contact Me
+        </h1>
+        <Link href="/" className="lg:hidden">
+          <Image src={Cross} alt="cross" width={40} height={40} />
+        </Link>
+      </div>
+
       <form onSubmit={handleSubmit} className="flex flex-col gap-6 w-full">
-        <div className="flex gap-5">
-          <div className="flex flex-col flex-1 gap-3">
-            <label htmlFor="firstName" className="text-xl font-medium">
-              First Name
-            </label>
-            <input
-              type="text"
-              id="firstName"
-              name="firstName"
-              value={formData.firstName}
-              onChange={handleChange}
-              required
-              className="border border-light-400 rounded-xl p-4"
-            />
-          </div>
-          <div className="flex flex-col flex-1 gap-3">
-            <label htmlFor="lastName" className="text-xl font-medium">
-              Last Name
-            </label>
-            <input
-              type="text"
-              id="lastName"
-              name="lastName"
-              value={formData.lastName}
-              onChange={handleChange}
-              required
-              className="border border-light-400 rounded-xl p-4"
-            />
-          </div>
-        </div>
-        <div className="flex gap-5">
-          <div className="flex flex-col flex-1 gap-3">
-            <label htmlFor="email" className="text-xl font-medium">
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              className="border border-light-400 rounded-xl p-4"
-            />
-          </div>
-          <div className="flex flex-col flex-1 gap-3">
-            <label htmlFor="phone" className="text-xl font-medium">
-              Phone
-            </label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-              required
-              className="border border-light-400 rounded-xl p-4"
-            />
-          </div>
-        </div>
-        <div className="flex flex-col gap-3">
-          <label htmlFor="message" className="text-xl font-medium">
-            Message (optional)
-          </label>
-          <textarea
-            id="message"
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            className="border border-light-400 rounded-xl p-4"
-          />
-        </div>
+        <Input
+          label="First Name"
+          type="text"
+          id="firstName"
+          name="firstName"
+          value={formData.firstName}
+          onChange={handleChange}
+          required
+        />
+        <Input
+          label="Last Name"
+          type="text"
+          id="lastName"
+          name="lastName"
+          value={formData.lastName}
+          onChange={handleChange}
+          required
+        />
+        <Input
+          label="Email"
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+        />
+        <Input
+          label="Phone"
+          type="tel"
+          id="phone"
+          name="phone"
+          value={formData.phone}
+          onChange={handleChange}
+          required
+        />
+        <Input
+          label="Message"
+          type="text"
+          id="message"
+          name="message"
+          value={formData.message}
+          onChange={handleChange}
+        />
         <button
           type="submit"
-          className="flex gap-1 justify-center bg-secondary-100 rounded-xl hover:cursor-pointer py-4"
+          className="flex gap-1 justify-center bg-linear-to-r from-[#ed935d] via-[#d72961] to-[#d42780] lg:bg-none lg:bg-secondary-100 rounded-xl hover:cursor-pointer py-4"
           disabled={loading}
         >
           <span className="font-bold">Let&apos;s Connect</span>

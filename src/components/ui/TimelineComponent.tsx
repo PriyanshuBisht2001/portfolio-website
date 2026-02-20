@@ -37,7 +37,7 @@ export default function TimelineComponent({
         {items.map((item, i) => (
           <div
             key={i}
-            className="flex gap-[26px] items-start relative pb-[52px]"
+            className="flex gap-[26px] items-start relative pb-6 lg:pb-[52px]"
           >
             {/* Vertical Line */}
             {i !== items.length - 1 && (
@@ -51,13 +51,13 @@ export default function TimelineComponent({
 
             {/* Timeline Content */}
             <div className="flex flex-col gap-2">
-              <h3 className="text-xl font-semibold">
+              <h3 className="text-lg lg:text-xl font-semibold">
                 {item.title} {item.subtitle && `- ${item.subtitle}`}
               </h3>
               <div className="text-sm font-medium text-secondary-100">
                 {item.startDate} - {item.endDate}
               </div>
-              <p>{item.description}</p>
+              <p className="hidden lg:block">{item.description}</p>
             </div>
           </div>
         ))}

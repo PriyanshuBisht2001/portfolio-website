@@ -25,7 +25,7 @@ export default function Input({
   const Component = as;
 
   return (
-    <div className="relative flex-1 group w-full">
+    <div className="relative flex-1 group">
       
       {/* Fieldset (Mobile Only) */}
       <fieldset className="absolute lg:hidden inset-0 bg-[#3b294a] border border-light-400 rounded-xl pointer-events-none group-focus-within:-mt-1.5">
@@ -43,7 +43,7 @@ export default function Input({
       </label>
 
       {/* Dynamic Input / Textarea */}
-      <Component
+      <input
         id={id}
         name={name}
         value={value}

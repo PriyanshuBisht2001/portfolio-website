@@ -99,8 +99,9 @@ export const experience = [
     id: 2,
     title: "Data Research Analyst",
     subTitle: "1 May 2021 - 31 Aug 2021",
-    description: "As a Data Research Analyst, I conduct research, collect and manage data and databases, and develop the data and result into a format easily representable to other employees."
-  }
+    description:
+      "As a Data Research Analyst, I conduct research, collect and manage data and databases, and develop the data and result into a format easily representable to other employees.",
+  },
 ];
 
 export const experienceTimeline = [
@@ -117,8 +118,9 @@ export const experienceTimeline = [
     subtitle: "ACE Study Overseas Pvt. Ltd.",
     startDate: "1 May 2021",
     endDate: "31 Aug 2021",
-    description: "As a Data Research Analyst, I conduct research, collect and manage data and databases, and develop the data and result into a format easily representable to other employees."
-  }
+    description:
+      "As a Data Research Analyst, I conduct research, collect and manage data and databases, and develop the data and result into a format easily representable to other employees.",
+  },
 ];
 
 export const educationTimeline = [
@@ -213,5 +215,27 @@ export const GetInTouchDetails = [
     value: "PriyanshuBisht2001",
     icon: "https://cdn-icons-png.flaticon.com/512/25/25231.png",
   },
-]
-  
+];
+
+export const sideMenuOptions = [
+  {
+    label: "About",
+    href: "/",
+  },
+  {
+    label: "Experience",
+    href: "/experience",
+  },
+  {
+    label: "Featured Projects",
+    href: "/project",
+  },
+  {
+    label: "Skills",
+    href: "/skill",
+  },
+  {
+    label: "Contact",
+    href: "/contact",
+  },
+];

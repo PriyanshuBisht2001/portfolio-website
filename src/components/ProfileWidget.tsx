@@ -1,19 +1,14 @@
 import { profileWidgetDetails } from "@/constants/defaultState";
 import Image from "next/image";
-import Menu from "@/assets/Menu.svg";
 import TypingText from "./ui/TypingText";
+import Link from "next/link";
+import SideMenu from "./SideMenu";
 
 const ProfileWidget = () => {
   return (
     <section className="h-[460px] bg-[linear-gradient(135deg,#1b1f2e,#020617,#301541,#101435,#DB2777)] relative lg:sticky top-0 lg:top-10 flex justify-center items-center flex-col lg:px-6 lg:py-10 lg:bg-none lg:bg-brand-200 w-full lg:rounded-[20px] gap-6 border border-brand-500 lg:h-fit">
       <div className="bg-brand-400 rounded-3xl">
-        <Image
-          src={Menu}
-          alt="Menu"
-          height={44}
-          width={44}
-          className="absolute top-8 right-2 lg:hidden"
-        />
+        <SideMenu />
         <Image
           src="/mobile_profile.png"
           alt="Priyanshu"
@@ -50,19 +45,25 @@ const ProfileWidget = () => {
         </span>
       </div>
       <div className="absolute z-10 top-52 left-2 lg:hidden">
-        <span className="font-semibold text-white text-[clamp(12px,3vw,26px)]">Building Scalable Web Experiences</span>
+        <span className="font-semibold text-white text-[clamp(12px,3vw,26px)]">
+          Building Scalable Web Experiences
+        </span>
         <p className="font-extrabold text-[clamp(26px,5vw,36px)] mb-2">
-         What I Specialize In
+          What I Specialize In
         </p>
-          <TypingText />
+        <TypingText />
       </div>
       <div className="top-40 relative flex lg:hidden gap-4 md:w-full md:pl-3 z-20">
-        <button className="bg-linear-to-r from-[#ed935d] via-[#d72961] to-[#d42780] py-3 px-5 min-w-[clamp(160px,35vw,200px)] rounded-2xl border-2">
-          Hire Me
-        </button>
-        <button className="bg-linear-to-r from-[#574ca8] via-[#4b32b2] to-[#4c38b7] py-3 px-5 min-w-[clamp(160px,35vw,200px)] rounded-2xl border-2">
-          Download CV
-        </button>
+        <Link href="/contact">
+          <button className="bg-linear-to-r from-[#ed935d] via-[#d72961] to-[#d42780] py-3 px-5 min-w-[clamp(160px,35vw,200px)] rounded-2xl border-2">
+            Hire Me
+          </button>
+        </Link>
+        <a href="/resume.pdf" download="Priyanshu-Bisht-Resume.pdf">
+          <button className="bg-linear-to-r from-[#574ca8] via-[#4b32b2] to-[#4c38b7] py-3 px-5 min-w-[clamp(160px,35vw,200px)] rounded-2xl border-2">
+            Download CV
+          </button>
+        </a>
       </div>
       <div className="border border-brand-500 w-full hidden lg:block" />
       <div className="flex-col gap-8 hidden lg:flex">

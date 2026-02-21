@@ -74,43 +74,48 @@ const Contact = () => {
       </div>
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-6 w-full">
+        <div className="flex flex-col lg:flex-row gap-5">
+          <Input
+            label="First Name"
+            type="text"
+            id="firstName"
+            name="firstName"
+            value={formData.firstName}
+            onChange={handleChange}
+            required
+          />
+          <Input
+            label="Last Name"
+            type="text"
+            id="lastName"
+            name="lastName"
+            value={formData.lastName}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="flex flex-col lg:flex-row gap-5">
+          <Input
+            label="Email"
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+          <Input
+            label="Phone"
+            type="tel"
+            id="phone"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            required
+          />
+        </div>
         <Input
-          label="First Name"
-          type="text"
-          id="firstName"
-          name="firstName"
-          value={formData.firstName}
-          onChange={handleChange}
-          required
-        />
-        <Input
-          label="Last Name"
-          type="text"
-          id="lastName"
-          name="lastName"
-          value={formData.lastName}
-          onChange={handleChange}
-          required
-        />
-        <Input
-          label="Email"
-          type="email"
-          id="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
-        <Input
-          label="Phone"
-          type="tel"
-          id="phone"
-          name="phone"
-          value={formData.phone}
-          onChange={handleChange}
-          required
-        />
-        <Input
+          as="textarea"
           label="Message"
           type="text"
           id="message"
@@ -118,6 +123,7 @@ const Contact = () => {
           value={formData.message}
           onChange={handleChange}
         />
+
         <button
           type="submit"
           className="flex gap-1 justify-center bg-linear-to-r from-[#ed935d] via-[#d72961] to-[#d42780] lg:bg-none lg:bg-secondary-100 rounded-xl hover:cursor-pointer py-4"

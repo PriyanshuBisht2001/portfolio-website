@@ -37,10 +37,10 @@ const ProfileWidget = () => {
         />
       </div>
       <div className="absolute top-[30px] left-4 lg:static flex flex-col gap-1 lg:items-center">
-        <span className="bg-linear-to-r from-[#feab71] via-[#ff81ad] to-[#f848b8] bg-clip-text text-transparent lg:bg-none lg:text-white font-black text-[clamp(34px,9vw,42px)] lg:text-2xl lg:font-extrabold">
+        <span className="bg-linear-to-r text-center from-[#feab71] via-[#ff81ad] to-[#f848b8] bg-clip-text text-transparent lg:bg-none lg:text-white font-black text-[clamp(34px,9vw,42px)] lg:text-2xl lg:font-extrabold">
           Priyanshu Bisht
         </span>
-        <span className="font-medium text-[clamp(20px,5vw,23px)] lg:bg-brand-300 lg:py-2 lg:px-3 lg:rounded-xl lg:text-xl lg:font-medium">
+        <span className="font-medium lg:text-center text-[clamp(20px,5vw,23px)] lg:bg-brand-300 lg:py-2 lg:px-3 lg:rounded-xl lg:text-xl lg:font-medium">
           Full Stack Developer
         </span>
       </div>
@@ -75,7 +75,7 @@ const ProfileWidget = () => {
                 <span className="text-light-300 text-xs font-medium">
                   {item.label}
                 </span>
-                <span>{item.value}</span>
+                <span className="line-clamp-1">{item.value}</span>
               </div>
             </div>
           );

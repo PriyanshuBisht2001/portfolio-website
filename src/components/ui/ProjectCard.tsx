@@ -8,7 +8,7 @@ type ProjectFieldTypes = {
 
 const ProjectCard = ({ name, heroImage }: ProjectFieldTypes) => {
   return (
-    <div className="shrink-0 text-center lg:text-left pb-5 rounded-lg bg-[#1d2647] lg:bg-none flex flex-col gap-4 lg:gap-3 hover:cursor-pointer">
+    <div className="shrink-0 text-center lg:text-left pb-5 rounded-lg bg-[#1d2647] lg:bg-inherit flex flex-col gap-4 lg:gap-3 hover:cursor-pointer">
       <Image
         src={heroImage || DummyImage}
         alt={name}

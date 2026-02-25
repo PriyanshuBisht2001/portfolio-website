@@ -11,5 +11,9 @@ export default async function EditProjectPage({ params }: Props) {
   const { id } = await params;
   const project = await fetchProjectByID(id);
 
-  return <AddProjectPageComponent existingProject={project} />;
+  return (
+    <div className="flex fixed top-0 left-0 right-0 bottom-0 bg-brand-100 px-20 py-10 bg-opacity-50 z-50 animate-slide-up overflow-auto">
+      <AddProjectPageComponent existingProject={project} />
+    </div>
+  );
 }

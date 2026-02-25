@@ -110,7 +110,7 @@ const ProjectModal = ({
       <div>
         <Header text="Project Details" textClassName="!text-2xl" />
         <ul className="list-disc pl-5">
-          {details.map((detail, index) => (
+          {details?.map((detail, index) => (
             <li key={index}>{detail}</li>
           ))}
         </ul>
@@ -119,7 +119,7 @@ const ProjectModal = ({
       <div>
         <Header text={`Checkout Project`} textClassName="!text-2xl" />
         <Link
-          href={url}
+          href={url || "#"}
           target="_blank"
           className="text-secondary-100 hover:underline"
         >

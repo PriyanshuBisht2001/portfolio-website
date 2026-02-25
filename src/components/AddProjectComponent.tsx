@@ -8,7 +8,8 @@ import {
 } from "@/utils/serverAction.ut";
 import Header from "./ui/Header";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
+import BackArrow from "@/assets/BackArrow.svg";
 
 const isDataURI = (str: string | null) =>
   typeof str === "string" && str.startsWith("data:image");
@@ -30,6 +31,7 @@ const AddProjectPageComponent = ({
 
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const { id } = useParams();
 
   const { headerText, buttonText } = useMemo(() => {
     const action = existingProject ? "Update" : "Add";
@@ -106,7 +108,7 @@ const AddProjectPageComponent = ({
             url: "",
           });
         }
-        router.push("/project");
+        router.back();
       } else {
         alert(`Failed to save Project.`);
       }
@@ -142,8 +144,16 @@ const AddProjectPageComponent = ({
 
   return (
     <div className="flex flex-col p-10 gap-8 w-full min-h-screen">
-      <Header text={headerText} />
-
+      <div className="flex gap-5">
+        <Image
+          src={BackArrow}
+          className="hover:cursor-pointer"
+          width={35}
+          onClick={() => id ? router.push("/project") : router.back()}
+          alt="Back Arrow"
+        />
+        <Header text={headerText} />
+      </div>
       <form
         className="flex flex-col gap-6 w-full p-6 justify-center"
         onSubmit={handleSubmit}

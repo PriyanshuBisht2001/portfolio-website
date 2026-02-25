@@ -5,7 +5,7 @@ import ProjectCard from "./ui/ProjectCard";
 import { Project } from "@/constants/defaultState";
 import { useAuth } from "@/contexts/AuthContext";
 import Link from "next/link";
-import MobileHeader from "./ui/MobileHeader";
+import { useRouter } from "next/navigation";
 
 interface Project {
   id: string;
@@ -23,6 +23,7 @@ interface ProjectsProps {
 
 const Projects = ({ projectList }: ProjectsProps) => {
   const { isAdmin } = useAuth();
+  const router = useRouter();
 
   return (
     <section className="flex flex-col p-5 lg:p-10 w-full">
@@ -38,7 +39,7 @@ const Projects = ({ projectList }: ProjectsProps) => {
       {isAdmin && (
         <div
           onClick={() => {
-            window.location.href = "project/add";
+            router.push("/project/create");
           }}
           className="flex mb-4 px-6 py-1 justify-center rounded-xl bg-secondary-100 hover:cursor-pointer hover:bg-secondary-100/80"
         >

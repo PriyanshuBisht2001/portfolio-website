@@ -33,7 +33,7 @@ export default function RootLayout({
       <body className={`${poppins.variable} ${outfit.variable} antialiased`}>
         <div className="lg:flex flex-row gap-6">
           <AuthProvider>
-            <div className="lg:flex lg:w-1/4">
+            <div className="lg:flex lg:w-1/3 xl:w-1/4">
               <ProfileWidget />
             </div>
             <div className="flex lg:w-3/4 lg:relative bg-[linear-gradient(235deg,#1b1f2e,#2c133d,#020617,#301541,#101435)] lg:bg-none lg:bg-brand-200 lg:rounded-[20px]">

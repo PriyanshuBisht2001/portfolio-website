@@ -1,5 +1,7 @@
+import ProjectSkeleton from "@/components/skeleton/SingleProjectSkeleton";
 import ProjectModal from "@/components/ui/ProjectModal";
 import { fetchProjectByID } from "@/utils/serverAction.ut";
+import { Suspense } from "react";
 
 type Props = {
   params: Promise<{ id: string }>;
@@ -11,7 +13,9 @@ export default async function InterceptionPage({ params }: Props) {
 
   return (
     <div className="flex fixed top-0 left-0 right-0 bottom-0 bg-brand-100 px-20 py-10 bg-opacity-50 z-50 animate-slide-up overflow-auto">
-      <ProjectModal {...project} />
+      <Suspense fallback={<ProjectSkeleton />}>
+        <ProjectModal {...project} />
+      </Suspense>
     </div>
   );
 }

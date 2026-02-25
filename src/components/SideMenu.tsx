@@ -45,13 +45,6 @@ const SideMenu = () => {
           </button>
 
           <div className="flex flex-col gap-5 items-center">
-            <Image
-              src="/side-menu-profile-image.webp"
-              height={120}
-              width={120}
-              className="rounded-full object-cover"
-              alt="Pradosh"
-            />
             {sideMenuOptions.map((option) => (
               <Link key={option.label} href={option.href} onClick={toggleMenu}>
                 {option.label}

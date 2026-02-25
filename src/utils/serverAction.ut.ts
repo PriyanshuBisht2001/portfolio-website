@@ -151,6 +151,11 @@ export const fetchAllProjects = async () => {
 };
 
 export const fetchProjectByID = async (id: string) => {
+  console.log("Fetching project with ID:", id);
+  if(id === "(.)create") {
+    console.log("Create mode detected, skipping fetch.");
+    return null;
+  }
   const payload = {
     query: GET_PROJECT_BY_ID,
     variables: { projectID: id },

@@ -1,5 +1,3 @@
-import React from "react";
-
 type HeaderProps = {
   text: string;
   containerClassName?: string;

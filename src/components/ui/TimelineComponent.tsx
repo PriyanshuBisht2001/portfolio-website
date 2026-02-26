@@ -33,7 +33,7 @@ export default function TimelineComponent({
       </div>
 
       {/* Timeline Items */}
-      <div className="flex flex-col z-20 pt-5 relative border border-[#354274] rounded-md bg-[radial-gradient(ellipse_at_center,#1a213b,#1a213b,transparent)] lg:border-none lg:bg-none">
+      <div className="flex flex-col z-20 pt-5 shadow-md hover:shadow-[#354274] relative border border-t-0 border-[#354274] rounded-b-md bg-[radial-gradient(ellipse_at_center,#1a213b,#1a213b,transparent)] lg:border-none lg:bg-none">
         {items.map((item, i) => (
           <div
             key={i}

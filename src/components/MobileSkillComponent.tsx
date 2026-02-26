@@ -50,7 +50,7 @@ export default function MobileSkillComponent() {
       <div className="flex justify-center">
         <button
           onClick={() => router.push("/skill")}
-          className="mt-10 p-4 md-p-5 items-center text-lg md:text-xl font-semibold lg:hidden border-2 border-white rounded-2xl bg-[linear-gradient(360deg,#254597,#282a61,#442965,#5f2d77,#a75170)] min-w-[clamp(160px,45vw,400px)]"
+          className="mt-10 p-4 hover:scale-105 md:p-5 items-center text-lg md:text-xl font-semibold lg:hidden border-2 border-white rounded-2xl bg-[linear-gradient(360deg,#254597,#282a61,#442965,#5f2d77,#a75170)] min-w-[clamp(160px,45vw,400px)]"
         >
           View All Skills
           <Image

@@ -21,7 +21,7 @@ export default function Skill() {
   const typedSkills = Skills as SkillsType;
   return (
     <section className="flex flex-col w-full absolute lg:static top-0 z-20 bg-[linear-gradient(235deg,#1b1f2e,#2c133d,#301541,#101435)] lg:bg-none">
-      <div className="flex flex-col px-10 pb-10 lg:pt-20 xl:pt-10 gap-10 lg:gap-6">
+      <div className="flex flex-col px-10 pt-10 pb-10 lg:pt-20 xl:pt-10 gap-10 lg:gap-6">
         <div className="flex justify-between">
           <h1 className="text-[28px] md:text-[32px] font-extrabold">
             Technical Proficiencies

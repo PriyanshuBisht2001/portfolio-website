@@ -12,7 +12,7 @@ export default function GetInTouch() {
             href={details.link || "#"}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex justify-between bg-linear-to-r from-[#161827] via-[#38276d] to-[#6a2679] rounded-2xl px-5 py-4 border-white border items-center"
+            className="flex hover:scale-105 justify-between bg-linear-to-r from-[#161827] via-[#38276d] to-[#6a2679] rounded-2xl px-5 py-4 border-white border items-center"
           >
             <div className="flex items-center gap-4">
               <img src={details.icon} alt={details.label} className="w-6 h-6 bg-white rounded-sm" />

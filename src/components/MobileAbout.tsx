@@ -14,7 +14,7 @@ export default async function MobileAbout() {
   return (
     <div className="w-full lg:hidden">
       <MobileSkillComponent />
-      <Projects projectList={projects} />
+      <Projects projectList={projects} isHome={true} />
       <div className="px-5 pt-10">
         <TimelineComponent heading="Experience" items={experienceTimeline} />
       </div>

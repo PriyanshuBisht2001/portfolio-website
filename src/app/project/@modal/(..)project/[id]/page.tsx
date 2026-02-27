@@ -12,7 +12,7 @@ export default async function InterceptionPage({ params }: Props) {
   const project = await fetchProjectByID(id);
 
   return (
-    <div className="flex fixed top-0 left-0 right-0 bottom-0 bg-brand-100 lg:px-20 lg:py-10 bg-opacity-50 z-50 animate-slide-up overflow-auto">
+    <div className="flex fixed top-0 left-0 right-0 bottom-0 bg-[linear-gradient(235deg,#1b1f2e,#2c133d,#301541,#101435)] lg:bg-none lg:bg-brand-100 lg:px-20 lg:py-10 bg-opacity-50 z-50 animate-slide-up overflow-auto">
       <Suspense fallback={<ProjectSkeleton />}>
         <ProjectModal {...project} />
       </Suspense>

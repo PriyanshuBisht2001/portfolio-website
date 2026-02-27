@@ -32,7 +32,7 @@ const ProjectModal = ({
   };
 
   return (
-    <div className="flex flex-col w-full gap-11 bg-brand-200 p-10 relative rounded-[20px] h-fit">
+    <div className="flex flex-col w-full gap-11 bg-[linear-gradient(235deg,#1b1f2e,#2c133d,#301541,#101435)] lg:bg-none lg:bg-brand-200 p-10 relative rounded-[20px] h-fit">
       <Image
         src={BackArrow}
         className="absolute top-12 left-6 hover:cursor-pointer"
@@ -41,7 +41,9 @@ const ProjectModal = ({
         alt="Back Arrow"
       />
       <div className="flex gap-10 items-center">
-        <MobileHeader title={name} />
+        <h1 className="text-[30px] md:text-[32px] font-extrabold ml-7 lg:hidden">
+          {name}
+        </h1>
         <Header text={name} containerClassName="pb-0 pl-8" />
         {isAdmin && (
           <div className="flex gap-4">
@@ -70,45 +72,57 @@ const ProjectModal = ({
         objectFit="cover"
       />
 
-      <div className="flex flex-col gap-4">
-        <h2 className="text-2xl lg:text-[32px] font-extrabold">Overview</h2>
+      <div>
+        <MobileHeader title="Overview" />
+        <Header text="Overview" textClassName="!text-2xl" />
         <p>{overview}</p>
       </div>
-
-      <div className="flex flex-col gap-4">
-        <h2 className="text-2xl lg:text-[32px] font-extrabold">Challenge</h2>
+      <div>
+        <MobileHeader title="Challenge" />
+        <Header text="Challenge" textClassName="!text-2xl" />
         <p>{challenge}</p>
       </div>
-
-      <div className={`grid ${photos && photos.length > 2 ? "grid-row-2 grid-cols-2" : photos.length === 2 ? "grid-row-2" : "grid-cols-1" } gap-4 h-[200px] lg:h-[440px]`}>
-        {photos && photos.length > 0 ? (
-          photos.slice(0, 3).map((photo, index) => (
-            <div
-              key={index}
-              className={index === 0 ? "row-span-2 h-full" : "h-full"}
-            >
-              <Image
-                src={photo || DummyImage}
-                alt={`${name} photo ${index + 1}`}
-                className="h-full w-full object-cover rounded-4xl"
-                width={720}
-                height={440}
-              />
-            </div>
-          ))
-        ) : (
-          <div className="col-span-2">
-            <Image
-              src={DummyImage}
-              alt="No photos available"
-              className="h-full w-full object-cover rounded-4xl"
-              width={720}
-              height={440}
-            />
-          </div>
-        )}
+<div
+  className={`grid 
+    ${
+      photos && photos.length > 2
+        ? "grid-cols-2 grid-rows-2"
+        : photos?.length === 2
+        ? "grid-cols-2"
+        : "grid-cols-1"
+    }
+    auto-rows-fr
+    gap-4 
+    h-[200px] lg:h-[300px]
+  `}
+>
+  {photos && photos.length > 0 ? (
+    photos.slice(0, 3).map((photo, index) => (
+      <div
+        key={index}
+        className={index === 0 ? "row-span-2 h-full" : "h-full"}
+      >
+        <Image
+          src={photo || DummyImage}
+          alt={`${name} photo ${index + 1}`}
+          className="h-full w-full object-cover rounded-4xl"
+          width={720}
+          height={440}
+        />
       </div>
-
+    ))
+  ) : (
+    <div className="col-span-2 h-full">
+      <Image
+        src={DummyImage}
+        alt="No photos available"
+        className="h-full w-full object-cover rounded-4xl"
+        width={720}
+        height={440}
+      />
+    </div>
+  )}
+</div>
       <div className="flex flex-col gap-4">
         <MobileHeader title="Project Details" />
         <Header text="Project Details" textClassName="!text-2xl" />
@@ -139,7 +153,7 @@ const ProjectModal = ({
           <div className="hidden lg:block h-px bg-linear-to-r from-brand-200 to-white/50 w-1/2" />
           <Link
             href={"/contact"}
-            className="flex gap-1 py-3 justify-center lg:w-1/6 w-2/3 bg-secondary-100 rounded-xl hover:cursor-pointer"
+            className="flex gap-1 py-3 justify-center lg:w-1/6 w-2/3 bg-linear-to-r from-[#ed935d] via-[#d72961] to-[#d42780] rounded-2xl border-2 lg:bg-none lg:bg-secondary-100 lg:border lg:rounded-xl hover:cursor-pointer"
           >
             <span className="font-bold">Let&apos;s Connect</span>
             <Image src={ConnectArrow} alt="Arrow" />

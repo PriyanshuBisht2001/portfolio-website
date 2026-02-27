@@ -7,7 +7,7 @@ const ProjectSkeleton: React.FC = () => {
       <div className="h-8 bg-brand-100 animate-pulse rounded-md w-1/3"></div>
 
       {/* Image Placeholder */}
-      <div className="h-[440px] bg-brand-100 animate-pulse rounded-4xl w-full"></div>
+      <div className="h-60 lg:h[440px] bg-brand-100 animate-pulse rounded-4xl w-full"></div>
 
       {/* Overview Section */}
       <div className="space-y-4">

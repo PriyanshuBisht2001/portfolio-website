@@ -42,7 +42,7 @@ const Projects = ({ projectList, isHome }: ProjectsProps) => {
             <div className="h-0.5 w-1/4 sm:w-1/3 bg-linear-to-r to-transparent from-[#a3a7af]" />
           </div>
         ) : (
-          <div className="flex justify-between mb-10">
+          <div className="flex justify-between mb-10 lg:hidden">
             <h1 className="text-[28px] md:text-[32px] font-extrabold">
               Featured Projects
             </h1>

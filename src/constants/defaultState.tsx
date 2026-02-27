@@ -106,20 +106,39 @@ export const experience = [
 
 export const experienceTimeline = [
   {
+    workType: "Full-time",
     title: "Software Developer",
     subtitle: "Hexadecimal Software Pvt. Ltd.",
     startDate: "13 Feb 2023",
     endDate: "30 Nov 2024",
+    location: "Noida, India",
+    workOn: ["HexaHome, Nutritt, Nutritt Merchant, Hexadecimal Website"],
     description:
       "Working as a Software Developer, contributing to both frontend and backend development of web applications. Key projects include Nutritt, a health and nutrition app, and HexaHome, a real estate platform. Responsibilities encompass building responsive user interfaces, optimizing application performance, and collaborating with cross-functional teams to deliver high-quality software solutions.",
+    techStack: [
+      "NextJS",
+      "React Native",
+      "ReactJs",
+      "Typescript",
+      "Graphql",
+      "SASS",
+      "Tailwind",
+      "Nodejs",
+      "Express",
+      "MongoDB",
+      "AWS",
+      "Docker",
+    ],
   },
   {
+    workType: "Intership",
     title: "Data Research Analyst",
     subtitle: "ACE Study Overseas Pvt. Ltd.",
     startDate: "1 May 2021",
     endDate: "31 Aug 2021",
     description:
       "As a Data Research Analyst, I conduct research, collect and manage data and databases, and develop the data and result into a format easily representable to other employees.",
+    techStack: ["MySQL", "PowerBI", "Microsoft Excel"],
   },
 ];
 

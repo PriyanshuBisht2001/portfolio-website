@@ -23,7 +23,7 @@ export default async function SelectedProjectPage({ params }: Props) {
   }
 
   return (
-    <section className="flex w-full">
+    <section className="flex w-full absolute top-0 left-0 z-20 lg:static">
       <Suspense fallback={<ProjectSkeleton />}>
         <ProjectModal {...project} />{" "}
       </Suspense>

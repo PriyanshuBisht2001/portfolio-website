@@ -11,7 +11,7 @@ const AddProjectPage = async () => {
   }
 
   return (
-    <section className="flex w-full">
+    <section className="flex w-full absolute top-0 left-0 z-20 lg:static">
       <AddProjectPageComponent />
     </section>
   );

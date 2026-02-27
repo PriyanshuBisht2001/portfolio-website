@@ -21,7 +21,6 @@
   --color-brand-500: #2f2f2f;
   --color-brand-600: #242425;
   --color-brand-700: #2c2c2c;
-  --color-brand-800: #2d2d2e;
   --color-light-100: #ffffff;
   --color-light-200: #e8e8e8;
   --color-light-300: #8f8f8f;
@@ -41,7 +40,7 @@
 }
 
 body {
-  background: var(--color-brand-100);
+  background: linear-gradient(235deg, #1b1f2e, #2c133d, #301541, #101435);
   font-family: var(--font-poppins), sans-serif;
   color: var(--color-light-100);
 }
@@ -64,6 +63,18 @@ body {
   .animate-slide-up {
     animation: slide-up 0.5s ease-in;
   }
+  .shadow-soft-inset {
+    box-shadow:
+      inset 0 30px 60px -12px rgba(50, 50, 93, 0.25),
+      inset 0 18px 36px -18px rgba(0, 0, 0, 0.3);
+  }
+  .shadow-card-hover {
+    box-shadow:
+      inset 0 30px 60px -12px rgba(139, 92, 246, 0.15),
+      inset 0 18px 36px -18px rgba(0, 0, 0, 0.5),
+      0 10px 30px -10px rgba(139, 92, 246, 0.25);
+  }
+
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
@@ -95,6 +106,7 @@ body {
 
 @media (min-width: 1024px) {
   body {
+    background: var(--color-brand-100);
     padding: 40px 80px 40px 80px;
     font-family: var(--font-outfit), sans-serif;
   }

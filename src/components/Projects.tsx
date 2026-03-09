@@ -65,7 +65,7 @@ const Projects = ({ projectList, isHome }: ProjectsProps) => {
       )}
       <div className="w-full">
         <div
-          className={`flex ${isHome ? "flex-row gap-4" : "flex-col gap-6"} md:grid md:grid-cols-2 lg:grid-cols-3 overflow-x-auto pb-4`}
+          className={`flex ${isHome ? "flex-row gap-4" : "flex-col gap-6"} no-scrollbar md:grid md:grid-cols-2 lg:grid-cols-3 overflow-x-auto pb-4`}
         >
           {projectList.map((project, i) => (
             <Link key={i} href={`/project/${project.id}`} className="shrink-0">

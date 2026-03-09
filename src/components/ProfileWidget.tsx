@@ -16,7 +16,7 @@ const ProfileWidget = () => {
           height={500}
           priority
           placeholder="empty"
-          className="absolute z-10 top-[120px] right-0 w-[clamp(199px,39vw,480px)] h-[clamp(230px,46vw,470px)] lg:hidden bg-transparent object-contain"
+          className="animate-slide-left lg:animate-none absolute z-10 top-[120px] right-0 w-[clamp(199px,39vw,480px)] h-[clamp(230px,46vw,470px)] lg:hidden bg-transparent object-contain"
         />
         <Image
           src="/mobile_hero_section_bg.webp"
@@ -36,7 +36,7 @@ const ProfileWidget = () => {
           className="hidden lg:block rounded-3xl"
         />
       </div>
-      <div className="absolute top-[30px] left-4 lg:static flex flex-col gap-1 lg:items-center">
+      <div className="absolute hero-text top-[30px] left-4 lg:static flex flex-col gap-1 lg:items-center">
         <span className="bg-linear-to-r text-center from-[#feab71] via-[#ff81ad] to-[#f848b8] bg-clip-text text-transparent lg:bg-none lg:text-white font-black text-[clamp(34px,9vw,42px)] lg:text-2xl lg:font-extrabold">
           Priyanshu Bisht
         </span>
@@ -44,7 +44,7 @@ const ProfileWidget = () => {
           Full Stack Developer
         </span>
       </div>
-      <div className="absolute z-10 top-52 left-2 lg:hidden">
+      <div className="animate-slide-right lg:animate-none absolute z-10 top-52 left-2 lg:hidden">
         <span className="font-semibold text-white text-[clamp(12px,3vw,26px)]">
           Building Scalable Web Experiences
         </span>

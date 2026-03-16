@@ -44,7 +44,7 @@ const SideMenu = () => {
             <Image src={Cross} height={32} width={32} alt="Close" />
           </button>
 
-          <div className="flex flex-col gap-5 items-center">
+          <div className="flex flex-col gap-5 items-center md:gap-10 md:text-2xl">
             {sideMenuOptions.map((option) => (
               <Link key={option.label} href={option.href} onClick={toggleMenu}>
                 {option.label}

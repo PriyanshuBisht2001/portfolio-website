@@ -216,7 +216,7 @@ export const GetInTouchDetails = [
   {
     id: 1,
     label: "EMAIL",
-    link: "mailto:priyanshubisht159@gmail.com",
+    link: "/contact",
     value: "priyanshubisht159@gmail.com",
     icon: "https://cdn-icons-png.flaticon.com/512/732/732200.png",
   },

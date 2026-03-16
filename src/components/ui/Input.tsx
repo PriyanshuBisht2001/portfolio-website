@@ -4,7 +4,7 @@ interface InputProps {
   name: string;
   value: string;
   onChange: (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => void;
   required?: boolean;
   type?: string;
@@ -25,15 +25,7 @@ export default function Input({
   const Component = as;
 
   return (
-    <div className="relative flex-1 group">
-      
-      {/* Fieldset (Mobile Only) */}
-      <fieldset className="absolute lg:hidden inset-0 bg-[#3b294a] border border-light-400 rounded-xl pointer-events-none group-focus-within:-mt-1.5">
-        <legend className="ml-3 px-1 text-sm hidden lg:opacity-100 lg:text-xl group-focus-within:block">
-          {label}
-        </legend>
-      </fieldset>
-
+    <div className="floating-label w-full">
       {/* Desktop Label */}
       <label
         htmlFor={id}
@@ -44,42 +36,41 @@ export default function Input({
 
       {/* Dynamic Input / Textarea */}
       <input
+        className={`floating-label__input border border-light-400 rounded-xl peer w-full outline-none text-base bg-transparent ${as === "textarea" ? "p-4 min-h-[120px] resize-none" : "p-4"}`}
         id={id}
         name={name}
         value={value}
         onChange={onChange}
-        placeholder=" "
         {...(as === "input" ? { type } : {})}
-        className={`
-          border border-light-400 rounded-xl peer w-full bg-transparent
-          outline-none text-base
-          ${as === "textarea" ? "p-4 min-h-[120px] resize-none" : "p-4"}
-        `}
-        {...props}
+        autoComplete="off"
+        required
+        placeholder=" "
+         {...props}
       />
-
-      {/* Floating Label (Mobile) */}
-      <label
-        htmlFor={id}
-        className="
-          absolute left-4 top-4
-          text-base text-light-300
-          transition-all duration-300 ease-linear
-          origin-left pointer-events-none
-
-          peer-focus:-translate-y-5
-          peer-focus:scale-90
-          peer-focus:opacity-0
-
-          peer-[:not(:placeholder-shown)]:-translate-y-5
-          peer-[:not(:placeholder-shown)]:scale-90
-          peer-[:not(:placeholder-shown)]:opacity-0
-
-          lg:hidden
-        "
-      >
-        {label}
-      </label>
+      <div className="floating-label__outline lg:hidden">
+        <div className="floating-label__leading"></div>
+        <div className="floating-label__notch">
+          <label className="floating-label__label" htmlFor="firstName">
+            {label}
+          </label>
+        </div>
+        <div className="floating-label__trailing"></div>
+      </div>
     </div>
   );
 }
+
+// <input
+//   id={id}
+//   name={name}
+//   value={value}
+//   onChange={onChange}
+//   placeholder=" "
+//   {...(as === "input" ? { type } : {})}
+//   className={`floating-label__input
+//     border border-light-400 rounded-xl peer w-full bg-transparent
+//     outline-none text-base
+//     ${as === "textarea" ? "p-4 min-h-[120px] resize-none" : "p-4"}
+//   `}
+//   {...props}
+// />

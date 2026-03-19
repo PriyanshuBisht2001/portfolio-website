@@ -14,7 +14,7 @@ const ProjectModal = ({
   id,
   name,
   heroImage,
-  challenge,
+  challenges,
   details,
   overview,
   photos,
@@ -78,51 +78,56 @@ const ProjectModal = ({
         <p>{overview}</p>
       </div>
       <div>
-        <MobileHeader title="Challenge" />
-        <Header text="Challenge" textClassName="!text-2xl" />
-        <p>{challenge}</p>
+        <MobileHeader title="Challenges & Solutions" />
+        <Header text="Challenges & Solutions" textClassName="!text-2xl" />
+        {challenges.map((data, index) => (
+          <ul className="list-disc pl-5">
+            <li key={index}>
+              {data.challenge} → {data.solution}
+            </li>
+          </ul>
+        ))}
       </div>
-<div
-  className={`grid 
+      <div
+        className={`grid 
     ${
       photos && photos.length > 2
-        ? "grid-cols-2 grid-rows-2"
+        ? "grid-cols-2 grid-rows-2 auto-rows-fr"
         : photos?.length === 2
-        ? "grid-cols-2"
-        : "grid-cols-1"
+          ? "grid-cols-2"
+          : "grid-cols-1 auto-rows-fr"
     }
-    auto-rows-fr
     gap-4 
     h-[200px] lg:h-[300px]
   `}
->
-  {photos && photos.length > 0 ? (
-    photos.slice(0, 3).map((photo, index) => (
-      <div
-        key={index}
-        className={index === 0 ? "row-span-2 h-full" : "h-full"}
       >
-        <Image
-          src={photo || DummyImage}
-          alt={`${name} photo ${index + 1}`}
-          className="h-full w-full object-cover rounded-4xl"
-          width={720}
-          height={440}
-        />
+        {photos && photos.length > 0 ? (
+          photos.slice(0, 3).map((photo, index) => (
+            <div
+              key={index}
+              className={index === 0 ? "row-span-2 h-full" : "h-full"}
+            >
+              <Image
+                src={photo || DummyImage}
+                alt={`${name} photo ${index + 1}`}
+                className="h-full w-full object-cover rounded-4xl"
+                width={720}
+                height={440}
+              />
+            </div>
+          ))
+        ) : (
+          <div className="col-span-2 h-full">
+            <Image
+              src={DummyImage}
+              alt="No photos available"
+              className="h-full w-full object-cover rounded-4xl"
+              width={720}
+              height={440}
+            />
+          </div>
+        )}
       </div>
-    ))
-  ) : (
-    <div className="col-span-2 h-full">
-      <Image
-        src={DummyImage}
-        alt="No photos available"
-        className="h-full w-full object-cover rounded-4xl"
-        width={720}
-        height={440}
-      />
-    </div>
-  )}
-</div>
       <div className="flex flex-col gap-4">
         <MobileHeader title="Project Details" />
         <Header text="Project Details" textClassName="!text-2xl" />

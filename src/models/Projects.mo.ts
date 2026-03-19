@@ -4,7 +4,12 @@ const ProjectSchema = new Schema({
   name: { type: String, required: true },
   heroImage: String,
   overview: String,
-  challenge: String,
+  challenges: [
+    {
+      challenge: { type: String, required: true },
+      solution: { type: String, required: true },
+    },
+  ],
   photos: [String],
   details: [String],
   url: String,

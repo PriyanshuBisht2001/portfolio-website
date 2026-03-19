@@ -23,7 +23,12 @@ const AddProjectPageComponent = ({
     name: "",
     heroImage: null,
     overview: "",
-    challenge: "",
+    challenges: [
+      {
+        challenge: "",
+        solution: "",
+      },
+    ],
     photos: [],
     details: [],
     url: "",
@@ -89,7 +94,7 @@ const AddProjectPageComponent = ({
       };
       const response = existingProject
         ? await updateProject({ id: existingProject.id, ...payload })
-        : await addProject(payload);
+        : await addProject(payload as any);
 
       if (response) {
         alert(
@@ -102,7 +107,12 @@ const AddProjectPageComponent = ({
             name: "",
             heroImage: null,
             overview: "",
-            challenge: "",
+            challenges: [
+              {
+                challenge: "",
+                solution: "",
+              },
+            ],
             photos: [],
             details: [],
             url: "",
@@ -120,28 +130,43 @@ const AddProjectPageComponent = ({
     }
   };
 
-  const updateDetails = (index: number, value: string) => {
+  const updateArrayItem = (
+    field: "details" | "challenges",
+    index: number,
+    value: any,
+    key?: string,
+  ) => {
     setFormData((prev: any) => {
-      const updatedDetails = [...prev.details];
-      updatedDetails[index] = value;
-      return { ...prev, details: updatedDetails };
+      const updated = [...prev[field]];
+
+      if (key) {
+        // for objects (challenges)
+        updated[index] = { ...updated[index], [key]: value };
+      } else {
+        // for strings (details)
+        updated[index] = value;
+      }
+
+      return { ...prev, [field]: updated };
     });
   };
 
-  const removeDetail = (index: number) => {
+  const addArrayItem = (field: "details" | "challenges") => {
     setFormData((prev: any) => ({
       ...prev,
-      details: prev.details.filter((_: any, i: any) => i !== index),
+      [field]:
+        field === "challenges"
+          ? [...prev[field], { challenge: "", solution: "" }]
+          : [...prev[field], ""],
     }));
   };
 
-  const addDetail = () => {
+  const removeArrayItem = (field: "details" | "challenges", index: number) => {
     setFormData((prev: any) => ({
       ...prev,
-      details: [...prev.details, ""],
+      [field]: prev[field].filter((_: any, i: number) => i !== index),
     }));
   };
-
   return (
     <div className="flex flex-col p-10 gap-8 w-full min-h-screen">
       <div className="flex gap-5">
@@ -149,7 +174,7 @@ const AddProjectPageComponent = ({
           src={BackArrow}
           className="hover:cursor-pointer"
           width={35}
-          onClick={() => id ? router.push("/project") : router.back()}
+          onClick={() => (id ? router.push("/project") : router.back())}
           alt="Back Arrow"
         />
         <Header text={headerText} />
@@ -172,13 +197,6 @@ const AddProjectPageComponent = ({
             type: "textarea",
             id: "overview",
             value: formData.overview,
-            onChange: handleChange,
-          },
-          {
-            label: "Challenge:",
-            type: "textarea",
-            id: "challenge",
-            value: formData.challenge,
             onChange: handleChange,
           },
           {
@@ -214,6 +232,56 @@ const AddProjectPageComponent = ({
             )}
           </div>
         ))}
+
+        <div className="flex flex-col gap-3">
+          <label className="font-medium text-xl">Challenges & Solutions:</label>
+          {formData.challenges.map((detail, index) => (
+            <div key={index} className="flex items-center gap-3">
+              <div className="flex flex-col gap-5 w-full">
+                <input
+                  className="flex-1 border border-light-400 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-secondary-100/80"
+                  type="text"
+                  value={detail.challenge}
+                  onChange={(e) =>
+                    updateArrayItem(
+                      "challenges",
+                      index,
+                      e.target.value,
+                      "challenge",
+                    )
+                  }
+                />
+                <input
+                  className="flex-1 border border-light-400 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-secondary-100/80"
+                  type="text"
+                  value={detail.solution}
+                  onChange={(e) =>
+                    updateArrayItem(
+                      "challenges",
+                      index,
+                      e.target.value,
+                      "solution",
+                    )
+                  }
+                />
+              </div>
+              <button
+                type="button"
+                onClick={() => removeArrayItem("challenges", index)}
+                className="text-light-300 border-light-300 border rounded-full h-8 w-8 justify-center items-center flex hover:cursor-pointer hover:border-secondary-200 hover:text-secondary-200 transition-all duration-200"
+              >
+                -
+              </button>
+            </div>
+          ))}
+          <button
+            type="button"
+            onClick={() => addArrayItem("challenges")}
+            className="mt-2 px-4 py-1 bg-secondary-200 text-white rounded hover:bg-secondary-200/80 transition-all w-fit hover:cursor-pointer"
+          >
+            + Add Detail
+          </button>
+        </div>
 
         <div className="flex flex-col gap-3">
           <label className="font-medium text-xl" htmlFor="heroImage">
@@ -301,11 +369,13 @@ const AddProjectPageComponent = ({
                 className="flex-1 border border-light-400 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-secondary-100/80"
                 type="text"
                 value={detail}
-                onChange={(e) => updateDetails(index, e.target.value)}
+                onChange={(e) =>
+                  updateArrayItem("details", index, e.target.value)
+                }
               />
               <button
                 type="button"
-                onClick={() => removeDetail(index)}
+                onClick={() => removeArrayItem("details", index)}
                 className="text-light-300 border-light-300 border rounded-full h-8 w-8 justify-center items-center flex hover:cursor-pointer hover:border-secondary-200 hover:text-secondary-200 transition-all duration-200"
               >
                 -
@@ -314,7 +384,7 @@ const AddProjectPageComponent = ({
           ))}
           <button
             type="button"
-            onClick={addDetail}
+            onClick={() => addArrayItem("details")}
             className="mt-2 px-4 py-1 bg-secondary-200 text-white rounded hover:bg-secondary-200/80 transition-all w-fit hover:cursor-pointer"
           >
             + Add Detail

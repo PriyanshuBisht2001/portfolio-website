@@ -39,7 +39,10 @@ export const ADD_PROJECT = `
       name 
       heroImage 
       overview 
-      challenge 
+      challenges {
+      challenge
+      solution
+      } 
       photos 
       details 
       url 
@@ -53,7 +56,10 @@ export const UPDATE_PROJECT = `
       name 
       heroImage 
       overview 
-      challenge 
+      challenges {
+      challenge
+      solution
+      } 
       photos 
       details 
       url 

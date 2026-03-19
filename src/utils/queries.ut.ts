@@ -15,7 +15,7 @@ export const GET_PROJECT_BY_ID = `
           name 
           heroImage 
           overview 
-          challenge 
+          challenges 
           photos 
           details 
           url 

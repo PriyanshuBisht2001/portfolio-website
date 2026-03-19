@@ -23,7 +23,12 @@ const AddProjectPageComponent = ({
     name: "",
     heroImage: null,
     overview: "",
-    challenge: "",
+    challenges: [
+      {
+        challenge: "",
+        solution: "",
+      },
+    ],
     photos: [],
     details: [],
     url: "",
@@ -88,8 +93,8 @@ const AddProjectPageComponent = ({
         photos: photoUrls,
       };
       const response = existingProject
-        ? await updateProject({ id: existingProject.id, ...payload })
-        : await addProject(payload);
+        ? await updateProject({ id: existingProject.id, ...payload } as any)
+        : await addProject(payload as any);
 
       if (response) {
         alert(
@@ -102,7 +107,12 @@ const AddProjectPageComponent = ({
             name: "",
             heroImage: null,
             overview: "",
-            challenge: "",
+            challenges: [
+              {
+                challenge: "",
+                solution: "",
+              },
+            ],
             photos: [],
             details: [],
             url: "",
@@ -149,7 +159,7 @@ const AddProjectPageComponent = ({
           src={BackArrow}
           className="hover:cursor-pointer"
           width={35}
-          onClick={() => id ? router.push("/project") : router.back()}
+          onClick={() => (id ? router.push("/project") : router.back())}
           alt="Back Arrow"
         />
         <Header text={headerText} />
@@ -172,13 +182,6 @@ const AddProjectPageComponent = ({
             type: "textarea",
             id: "overview",
             value: formData.overview,
-            onChange: handleChange,
-          },
-          {
-            label: "Challenge:",
-            type: "textarea",
-            id: "challenge",
-            value: formData.challenge,
             onChange: handleChange,
           },
           {
@@ -214,6 +217,42 @@ const AddProjectPageComponent = ({
             )}
           </div>
         ))}
+
+        <div className="flex flex-col gap-3">
+          <label className="font-medium text-xl">Challenges & Solutions:</label>
+          {formData.challenges.map((detail, index) => (
+            <div key={index} className="flex items-center gap-3">
+              <div>
+                <input
+                  className="flex-1 border border-light-400 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-secondary-100/80"
+                  type="text"
+                  value={detail.challenge}
+                  onChange={(e) => updateDetails(index, e.target.value)}
+                />
+                <input
+                  className="flex-1 border border-light-400 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-secondary-100/80"
+                  type="text"
+                  value={detail.solution}
+                  onChange={(e) => updateDetails(index, e.target.value)}
+                />
+              </div>
+              <button
+                type="button"
+                onClick={() => removeDetail(index)}
+                className="text-light-300 border-light-300 border rounded-full h-8 w-8 justify-center items-center flex hover:cursor-pointer hover:border-secondary-200 hover:text-secondary-200 transition-all duration-200"
+              >
+                -
+              </button>
+            </div>
+          ))}
+          <button
+            type="button"
+            onClick={addDetail}
+            className="mt-2 px-4 py-1 bg-secondary-200 text-white rounded hover:bg-secondary-200/80 transition-all w-fit hover:cursor-pointer"
+          >
+            + Add Detail
+          </button>
+        </div>
 
         <div className="flex flex-col gap-3">
           <label className="font-medium text-xl" htmlFor="heroImage">

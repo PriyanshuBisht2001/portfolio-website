@@ -3,7 +3,12 @@ export type ProjectFieldTypes = {
   name: string;
   heroImage: string;
   overview: string;
-  challenge: string;
+  challenges: [
+    {
+      challenge: string;
+      solution: string;
+    },
+  ];
   photos: string[];
   details: string[];
   url: string;

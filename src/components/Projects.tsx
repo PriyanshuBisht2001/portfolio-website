@@ -14,7 +14,12 @@ interface Project {
   name: string;
   heroImage: string;
   overview: string;
-  challenge: string;
+  challenge: [
+    {
+      challenge: string;
+      solution: string;
+    },
+  ];
   photos: string[];
   details: string[];
   url: string;

@@ -191,12 +191,17 @@ export const addProject = async (props: {
   name: string;
   heroImage: string;
   overview: string;
-  challenge: string;
+  challenges: [
+    {
+      challenge: string;
+      solution: string;
+    },
+  ];
   photos: string[];
   details: string[];
   url: string;
 }) => {
-  const { name, heroImage, overview, challenge, photos, details, url } = props;
+  const { name, heroImage, overview, challenges, photos, details, url } = props;
   const cookieStore = await cookies();
   const authHeader = cookieStore.get("token")?.value;
 
@@ -207,7 +212,7 @@ export const addProject = async (props: {
   const payload = {
     query: ADD_PROJECT,
     variables: {
-      input: { name, heroImage, overview, challenge, photos, details, url },
+      input: { name, heroImage, overview, challenges, photos, details, url },
     },
   };
   const response = await fetch(

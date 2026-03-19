@@ -4,7 +4,7 @@ const projectTypeDefs = `
     name: String!
     heroImage: String
     overview: String
-    challenge: String
+    challenges: ChallengeInput
     photos: [String!]
     details: [String!]
     url: String
@@ -14,11 +14,16 @@ const projectTypeDefs = `
       name: String!
       heroImage: String
       overview: String
-      challenge: String
+      challenges: ChallengeInput
       photos: [String!]
       details: [String!]
       url: String
 
+  }
+
+  input ChallengeInput {
+  challenge: String!
+  solution: String!
   }
 
   input UpdateProjectInput {
@@ -26,7 +31,7 @@ const projectTypeDefs = `
     name: String
     heroImage: String
     overview: String
-    challenge: String
+    challenges: ChallengeInput
     photos: [String!]
     details: [String!]
     url: String

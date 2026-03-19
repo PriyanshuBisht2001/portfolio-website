@@ -1,29 +1,33 @@
 const projectTypeDefs = `
+  input ChallengeInput {
+    challenge: String!
+    solution: String!
+  }
+
+  type Challenge {
+    challenge: String!
+    solution: String!
+  }
+
   type Project {
     id: ID!
     name: String!
     heroImage: String
     overview: String
-    challenges: ChallengeInput
+    challenges: [Challenge!]
     photos: [String!]
     details: [String!]
     url: String
   }
 
   input ProjectInput {
-      name: String!
-      heroImage: String
-      overview: String
-      challenges: ChallengeInput
-      photos: [String!]
-      details: [String!]
-      url: String
-
-  }
-
-  input ChallengeInput {
-  challenge: String!
-  solution: String!
+    name: String!
+    heroImage: String
+    overview: String
+    challenges: [ChallengeInput!]
+    photos: [String!]
+    details: [String!]
+    url: String
   }
 
   input UpdateProjectInput {
@@ -31,7 +35,7 @@ const projectTypeDefs = `
     name: String
     heroImage: String
     overview: String
-    challenges: ChallengeInput
+    challenges: [ChallengeInput!]
     photos: [String!]
     details: [String!]
     url: String

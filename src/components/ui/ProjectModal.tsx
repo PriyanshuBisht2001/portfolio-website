@@ -80,11 +80,12 @@ const ProjectModal = ({
       <div>
         <MobileHeader title="Challenges & Solutions" />
         <Header text="Challenges & Solutions" textClassName="!text-2xl" />
-        {challenges.map((data) => (
-          <div>
-            Challenge: <p>{data.challenge}</p>
-            Solution: <p>{data.solution}</p>
-          </div>
+        {challenges.map((data, index) => (
+          <ul className="list-disc pl-5">
+            <li key={index}>
+              {data.challenge} → {data.solution}
+            </li>
+          </ul>
         ))}
       </div>
       <div

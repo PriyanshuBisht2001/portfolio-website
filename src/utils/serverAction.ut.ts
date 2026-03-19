@@ -202,6 +202,7 @@ export const addProject = async (props: {
   url: string;
 }) => {
   const { name, heroImage, overview, challenges, photos, details, url } = props;
+  console.log(props,'props')
   const cookieStore = await cookies();
   const authHeader = cookieStore.get("token")?.value;
 

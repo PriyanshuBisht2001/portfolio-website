@@ -86,12 +86,11 @@ const ProjectModal = ({
   className={`grid 
     ${
       photos && photos.length > 2
-        ? "grid-cols-2 grid-rows-2"
+        ? "grid-cols-2 grid-rows-2 auto-rows-fr"
         : photos?.length === 2
         ? "grid-cols-2"
-        : "grid-cols-1"
+        : "grid-cols-1 auto-rows-fr"
     }
-    auto-rows-fr
     gap-4 
     h-[200px] lg:h-[300px]
   `}

@@ -10,6 +10,7 @@ import {
 import { cookies } from "next/headers";
 import { GET_ALL_PROJECTS, GET_PROJECT_BY_ID } from "./queries.ut";
 import { RevalidateTags } from "@/constants/enums";
+import { revalidateTag } from "next/cache";
 
 export const submitContactForm = async (props: {
   firstName: string;
@@ -152,7 +153,7 @@ export const fetchAllProjects = async () => {
 
 export const fetchProjectByID = async (id: string) => {
   console.log("Fetching project with ID:", id);
-  if(id === "(.)create") {
+  if (id === "(.)create") {
     console.log("Create mode detected, skipping fetch.");
     return null;
   }
@@ -267,6 +268,9 @@ export async function updateProject(data: any): Promise<any> {
     console.error("GraphQL Error:", json.errors);
     throw new Error(json.errors[0].message);
   }
+
+  revalidateTag(RevalidateTags.PROJECTS, "default");
+  revalidateTag(RevalidateTags.SINGLEPROJECTS, "default");
 
   return json.data.updateProject;
 }

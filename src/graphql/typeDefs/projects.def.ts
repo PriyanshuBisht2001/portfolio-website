@@ -1,12 +1,12 @@
 const projectTypeDefs = `
   input ChallengeInput {
     challenge: String!
-    solution: String!
+    solution: String
   }
 
   type Challenge {
     challenge: String!
-    solution: String!
+    solution: String
   }
 
   type Project {

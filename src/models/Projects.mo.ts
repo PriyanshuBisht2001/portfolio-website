@@ -7,7 +7,7 @@ const ProjectSchema = new Schema({
   challenges: [
     {
       challenge: { type: String, required: true },
-      solution: { type: String, required: true },
+      solution: { type: String, required: false },
     },
   ],
   photos: [String],
